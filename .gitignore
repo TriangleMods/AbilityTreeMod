@@ -1,0 +1,30 @@
+# eclipse
+bin
+*.launch
+.settings
+.metadata
+.classpath
+.project
+
+# idea
+*.ipr
+*.iws
+*.iml
+
+# enviroment dirs
+.gradle
+.idea
+build
+eclipse
+gradle
+out
+run
+
+# enviroment
+build.gradle
+*.txt
+gradlew*
+gradle.properties
+
+# example mods
+**/com/example/keys
