@@ -1,11 +1,13 @@
-package com.triangle.abilitytree.training_counters;
+package com.triangle.abilitytree.base;
 
-public class TrainingCounter implements ITrainingCounter
+import net.minecraft.entity.player.EntityPlayer;
+
+public class TrainingCounter
 {
-	protected int value = 0;
-	protected final int target;
-	protected String description;
-	protected boolean visible = true;
+	int value = 0;
+	final int target;
+	String description;
+	boolean visible = true;
 
 	public TrainingCounter(int target, String description) throws IndexOutOfBoundsException
 	{
@@ -22,53 +24,46 @@ public class TrainingCounter implements ITrainingCounter
 		return this;
 	}
 
-	@Override
 	public boolean isComplited()
 	{
 		return getCurrentValue() >= getTargetValue();
 	}
 
-	@Override
 	public boolean isVisible()
 	{
 		return visible;
 	}
 
-	@Override
 	public String getDescription()
 	{
 		return description;
 	}
 
-	@Override
 	public int getTargetValue()
 	{
 		return target;
 	}
 
-	@Override
 	public int getCurrentValue()
 	{
 		return value;
 	}
 
-	@Override
-	public boolean addToValue()
+	public void addValue(EntityPlayer player)
 	{
-		value++;
-		return isComplited();
+		addValue(1, player);
 	}
 
-	@Override
-	public boolean addToValue(int i)
+
+	public void addValue(int i, EntityPlayer player)
 	{
 		value+=i;
-		return isComplited();
 	}
 
-	@Override
 	public void resetValue()
 	{
 		value = 0;
 	}
+
+
 }

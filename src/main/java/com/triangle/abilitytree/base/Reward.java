@@ -1,6 +1,6 @@
-package com.triangle.abilitytree.rewards;
+package com.triangle.abilitytree.base;
 
-public class Reward implements IReward
+public class Reward
 {
 	protected final String description;
 
@@ -9,7 +9,6 @@ public class Reward implements IReward
 		this.description = description;
 	}
 
-	@Override
 	public String getDescription()
 	{
 		return description;
