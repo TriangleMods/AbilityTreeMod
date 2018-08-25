@@ -13,7 +13,7 @@ public class AbilityTreeMod
 {
     public static final String MODID = "abilitytree";
     public static final String NAME = "Ability Tree Mod";
-    public static final String VERSION = "0.0.0";
+    public static final String VERSION = "0.0.1";
 
     @SidedProxy(clientSide = "com.triangle.abilitytree.proxy.ClientProxy", serverSide = "com.triangle.abilitytree.proxy.ServerProxy")
     private static CommonProxy proxy;
