@@ -26,5 +26,9 @@ build.gradle
 gradlew*
 gradle.properties
 
-# example mods
-**/com/example/keys
+# daihaminkey
+**/com/daihaminkey
+
+# RotoOm
+**/com/rotoom
+
