@@ -1,6 +1,6 @@
-package com.triangle.abilitytree.ability.condition;
+package com.triangle.abilitytree.training_counters;
 
-public interface IAbilityCondition
+public interface ITrainingCounter
 {
 	boolean isComplited();
 	boolean isVisible();

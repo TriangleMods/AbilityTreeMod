@@ -1,5 +1,7 @@
 package com.triangle.abilitytree.proxy;
 
+import com.triangle.abilitytree.rewards.Reward;
+
 public abstract class CommonProxy
 {
 
@@ -17,6 +19,8 @@ public abstract class CommonProxy
 
 	public void postInit()
 	{
+		Reward reward = new Reward("Теперь ты пидор");
 
+		System.err.println();
 	}
 }

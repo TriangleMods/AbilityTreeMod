@@ -1,13 +1,13 @@
-package com.triangle.abilitytree.ability.condition;
+package com.triangle.abilitytree.training_counters;
 
-public class AbilityCondition implements IAbilityCondition
+public class TrainingCounter implements ITrainingCounter
 {
 	protected int value = 0;
 	protected final int target;
 	protected String description;
 	protected boolean visible = true;
 
-	public AbilityCondition(int target, String description) throws IndexOutOfBoundsException
+	public TrainingCounter(int target, String description) throws IndexOutOfBoundsException
 	{
 		if(target <= 0)
 			throw new IndexOutOfBoundsException("Target value must be larger than zero");
@@ -16,7 +16,7 @@ public class AbilityCondition implements IAbilityCondition
 		this.description = description;
 	}
 
-	public AbilityCondition setVisible(boolean visible)
+	public TrainingCounter setVisible(boolean visible)
 	{
 		this.visible = visible;
 		return this;
