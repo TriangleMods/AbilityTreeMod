@@ -1,5 +1,6 @@
 package com.triangle.abilitytree.keys;
 
+import com.triangle.abilitytree.guiexample.advancedGuiScreen;
 import com.triangle.abilitytree.guiexample.basicGui;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
@@ -34,7 +35,7 @@ public class KeyHandler
 		EntityPlayer player = Minecraft.getMinecraft().player;
 		if(keyBindings[0].isPressed())//P
 		{
-			player.sendMessage(new TextComponentString("P"));
+			FMLCommonHandler.instance().showGuiScreen(new advancedGuiScreen());
 		}
 		if(keyBindings[1].isPressed())//I
 		{
