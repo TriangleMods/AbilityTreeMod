@@ -13,18 +13,15 @@ import java.util.List;
 public class advancedGuiScreen extends GuiScreen
 {
 
-	GuiButton button1;
 	skillButton skillB;
 
-	final int SKILLB = 3;
+	final int SKILLB = 1;
 
 
 	@Override
 	public void initGui()
 	{
 		buttonList.clear();
-		buttonList.add(new basicButton(width));
-		buttonList.add(button1 = new GuiButton(2, width/2-100,45,200,20,"Hello"));
 		buttonList.add(skillB = new skillButton(SKILLB,width/2, height/2));
 		super.initGui();
 	}
@@ -35,7 +32,7 @@ public class advancedGuiScreen extends GuiScreen
 		switch (button.id)
 		{
 			case 1:
-				Minecraft.getMinecraft().player.sendMessage(new TextComponentString("Hello"));
+				Minecraft.getMinecraft().player.sendMessage(new TextComponentString("button is clicked"));
 				break;
 		}
 	}
@@ -47,21 +44,12 @@ public class advancedGuiScreen extends GuiScreen
 	}
 
 	@Override
-	public void drawHoveringText(String text, int x, int y)
-	{
-		drawHoveringText("Hello",width/2-100, 20);
-	}
-
-	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks)
 	{
-
 		drawDefaultBackground();
 
 		int centerX = (width / 2);
 		int centerY = (height / 2);
-
-
 
 		super.drawScreen(mouseX, mouseY, partialTicks);
 
