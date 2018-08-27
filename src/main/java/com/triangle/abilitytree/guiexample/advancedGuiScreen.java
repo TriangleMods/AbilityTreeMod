@@ -1,10 +1,14 @@
 package com.triangle.abilitytree.guiexample;
 
+import com.triangle.abilitytree.base.TrainingHandler;
+import com.triangle.abilitytree.trainings.jump.JumpHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.fml.client.config.GuiButtonExt;
+import com.triangle.abilitytree.trainings.jump.JumpHandler;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,7 +19,7 @@ public class advancedGuiScreen extends GuiScreen
 
 	skillButton skillB;
 
-	final int SKILLB = 1;
+	final int SKILLB = 3;
 
 
 	@Override
@@ -23,6 +27,7 @@ public class advancedGuiScreen extends GuiScreen
 	{
 		buttonList.clear();
 		buttonList.add(skillB = new skillButton(SKILLB,width/2, height/2));
+
 		super.initGui();
 	}
 
@@ -32,6 +37,8 @@ public class advancedGuiScreen extends GuiScreen
 		switch (button.id)
 		{
 			case 1:
+				break;
+			case 3:
 				Minecraft.getMinecraft().player.sendMessage(new TextComponentString("button is clicked"));
 				break;
 		}
@@ -51,12 +58,13 @@ public class advancedGuiScreen extends GuiScreen
 		int centerX = (width / 2);
 		int centerY = (height / 2);
 
-		super.drawScreen(mouseX, mouseY, partialTicks);
+		skillB.drawButton(mc, mouseX, mouseY, partialTicks);
 
 		if(mouseX >= centerX && mouseX <= centerX + 40 && mouseY >= centerY && mouseY <= centerY + 40)
 		{
 			List<String> text = new ArrayList<String>();
 			text.add("Hello");
+			text.add("Jump: ");
 			drawHoveringText(text, mouseX, mouseY);
 		}
 
