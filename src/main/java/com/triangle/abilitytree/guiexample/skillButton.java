@@ -5,6 +5,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextComponentString;
 
 public class skillButton extends GuiButton
 {
@@ -16,7 +17,7 @@ public class skillButton extends GuiButton
 	int u = 0;
 	int v = 0;
 
-	boolean cover = false;
+	boolean cover = true;
 
 	public skillButton(int buttonId, int x, int y) {
 		super(buttonId, x, y, 37, 34, "");
@@ -63,19 +64,19 @@ public class skillButton extends GuiButton
 
 	}
 
+
 	@Override
 	public boolean mousePressed(Minecraft mc, int mouseX, int mouseY)
 	{
-		if(mouseX >= x && mouseX <= x + width && mouseY >= y && mouseY <= y + height)
-		{
-			if (cover) {
-				cover = false;
 
+			if (cover)
+			{
+				cover = false;
 			} else {
 				cover = true;
-
 			}
-		}
-		return true;
+		return enabled && mouseX >= x && mouseX <= x + width && mouseY >= y && mouseY <= y + height;
 	}
+
+
 }
