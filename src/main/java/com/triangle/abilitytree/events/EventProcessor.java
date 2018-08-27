@@ -3,6 +3,7 @@ package com.triangle.abilitytree.events;
 import com.triangle.abilitytree.base.TrainingHandler;
 import com.triangle.abilitytree.base.TrainingCounter;
 import com.triangle.abilitytree.base.Training;
+import com.triangle.abilitytree.dto.StaticField;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -26,6 +27,9 @@ public class EventProcessor
 		if(event.getEntity() instanceof EntityPlayer)
 		{
 			ArrayList<Training> doneTrainings = new ArrayList<>();
+
+			if(event.getEntity().world.isRemote)
+				StaticField.setValue(StaticField.getSkill().getCounters()[0].getValue()+1);
 
 			for (Training training : trackingTrainings)
 			{

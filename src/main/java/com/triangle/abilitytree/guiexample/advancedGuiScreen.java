@@ -1,6 +1,7 @@
 package com.triangle.abilitytree.guiexample;
 
 import com.triangle.abilitytree.base.TrainingHandler;
+import com.triangle.abilitytree.dto.StaticField;
 import com.triangle.abilitytree.trainings.jump.JumpHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -26,7 +27,7 @@ public class advancedGuiScreen extends GuiScreen
 	public void initGui()
 	{
 		buttonList.clear();
-		buttonList.add(skillB = new skillButton(SKILLB,width/2, height/2));
+		buttonList.add(skillB = new skillButton(SKILLB,width/2, height/2, StaticField.getSkill()));
 
 		super.initGui();
 	}
@@ -64,7 +65,7 @@ public class advancedGuiScreen extends GuiScreen
 		{
 			List<String> text = new ArrayList<String>();
 			text.add("Hello");
-			text.add("Jump: ");
+			text.add("Jump: " + skillB.skillDTO.getCounters()[0].getValue());
 			drawHoveringText(text, mouseX, mouseY);
 		}
 
