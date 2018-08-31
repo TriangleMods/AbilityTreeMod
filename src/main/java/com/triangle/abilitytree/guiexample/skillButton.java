@@ -16,7 +16,7 @@ public class skillButton extends GuiButton
 	int buttonWidth = 37;
 	int buttonHeight = 34;
 	int u = 0;
-	int v = 0;
+	int v = 48;
 
 	boolean cover = true;
 
@@ -68,18 +68,6 @@ public class skillButton extends GuiButton
 	}
 
 
-	@Override
-	public boolean mousePressed(Minecraft mc, int mouseX, int mouseY)
-	{
-
-			if (cover)
-			{
-				cover = false;
-			} else {
-				cover = true;
-			}
-		return enabled && mouseX >= x && mouseX <= x + width && mouseY >= y && mouseY <= y + height;
-	}
-
+	
 
 }

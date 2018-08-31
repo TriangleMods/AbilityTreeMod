@@ -64,7 +64,7 @@ public class advancedGuiScreen extends GuiScreen
 		if(mouseX >= centerX && mouseX <= centerX + 40 && mouseY >= centerY && mouseY <= centerY + 40)
 		{
 			List<String> text = new ArrayList<String>();
-			text.add("Hello");
+			text.add(skillB.skillDTO.getName());
 			text.add("Jump: " + skillB.skillDTO.getCounters()[0].getValue());
 			drawHoveringText(text, mouseX, mouseY);
 		}
