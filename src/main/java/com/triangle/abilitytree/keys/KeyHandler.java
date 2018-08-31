@@ -1,11 +1,10 @@
 package com.triangle.abilitytree.keys;
 
 import com.triangle.abilitytree.guiexample.advancedGuiScreen;
-import com.triangle.abilitytree.guiexample.basicGui;
+import com.triangle.abilitytree.guiskillscreen.MainSkillScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -37,9 +36,9 @@ public class KeyHandler
 		{
 			FMLCommonHandler.instance().showGuiScreen(new advancedGuiScreen());
 		}
-		if(keyBindings[1].isPressed())//I
+		if(keyBindings[1].isPressed())//Call Main skill screen
 		{
-			FMLCommonHandler.instance().showGuiScreen(new basicGui());
+			FMLCommonHandler.instance().showGuiScreen(new MainSkillScreen());
 		}
 	}
 }
