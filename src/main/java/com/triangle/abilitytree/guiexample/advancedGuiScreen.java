@@ -1,15 +1,12 @@
 package com.triangle.abilitytree.guiexample;
 
-import com.triangle.abilitytree.base.TrainingHandler;
+
 import com.triangle.abilitytree.dto.StaticField;
-import com.triangle.abilitytree.trainings.jump.JumpHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.text.TextComponentString;
-import net.minecraftforge.fml.client.config.GuiButtonExt;
-import com.triangle.abilitytree.trainings.jump.JumpHandler;
 
 import java.io.IOException;
 import java.util.ArrayList;
