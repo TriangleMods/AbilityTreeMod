@@ -13,6 +13,11 @@ public class SkillTreeProvider implements ICapabilitySerializable<NBTBase>
 
 	private ISkillTree instance = SKILL_TREE_CAPABILITY.getDefaultInstance();
 
+	public SkillTreeProvider()
+	{
+		System.err.println("###   SkillTreeProvider constructed  ###");
+	}
+
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing)
 	{
