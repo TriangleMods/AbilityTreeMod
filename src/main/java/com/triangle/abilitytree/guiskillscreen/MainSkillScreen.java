@@ -17,7 +17,7 @@ public class MainSkillScreen extends GuiScreen
 	AdventureMainButton adventureMainButton;
 	WorkingMainButton workingMainButton;
 	MiningMainButton miningMainButton;
-
+	//MainSkillButton amb;
 
 
 	@Override
@@ -29,6 +29,7 @@ public class MainSkillScreen extends GuiScreen
 		buttonList.add(adventureMainButton = new AdventureMainButton(3,width/2 - 25,height/2));
 		buttonList.add(workingMainButton = new WorkingMainButton(4,width/2 + 26,height/2));
 		buttonList.add(miningMainButton = new MiningMainButton(5,width/2 + 26 + 51,height/2));
+		//buttonList.add(amb = new MainSkillButton(3,width/2 + 26, height/2,102));
 
 	}
 
