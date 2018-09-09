@@ -1,8 +1,5 @@
 package com.triangle.abilitytree.events;
 
-import com.triangle.abilitytree.base.TrainingHandler;
-import com.triangle.abilitytree.base.TrainingCounter;
-import com.triangle.abilitytree.base.Training;
 import com.triangle.abilitytree.dto.StaticField;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.entity.living.LivingEvent;
@@ -12,19 +9,19 @@ import java.util.ArrayList;
 
 public class EventProcessor
 {
-	static ArrayList<Training> trackingTrainings = new ArrayList<>();
+	//static ArrayList<Training> trackingTrainings = new ArrayList<>();
 
-	public static void add(Training training)
+	/*public static void add(Training training)
 	{
 		trackingTrainings.add(training);
-	}
+	}*/
 
 	//TODO many lists to improve performance
 
 	@SubscribeEvent
 	public void onJumpEvent(LivingEvent.LivingJumpEvent event)
 	{
-		if(event.getEntity() instanceof EntityPlayer)
+		/*if(event.getEntity() instanceof EntityPlayer)
 		{
 			ArrayList<Training> doneTrainings = new ArrayList<>();
 
@@ -56,6 +53,6 @@ public class EventProcessor
 
 			if(doneTrainings.size()>0)
 				trackingTrainings.removeAll(doneTrainings);
-		}
+		}*/
 	}
 }
