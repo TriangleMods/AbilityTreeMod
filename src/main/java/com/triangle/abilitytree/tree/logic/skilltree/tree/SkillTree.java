@@ -27,23 +27,22 @@ public class SkillTree implements ISkillTree
 	public String getDataAsString()
 	{
 		//FIXME бля
-		return "oh, hi mark";
-		/*
+		//return "oh, hi mark";
 		StringBuilder builder = new StringBuilder("");
 		serialize(root, builder);
 		//int length = builder.length();
 		//return builder.replace(length-1,length,"@").toString();
-		return builder.toString();*/
+		return builder.toString();
 	}
 
 	@Override
 	public void setDataFromString(String serializedData)
 	{
 
-		/*String[] countersData = serializedData.split(";");
+		String[] countersData = serializedData.split(";");
 		ArrayList<String> modCounters = Util.getOnlyStartedWithAndCut(countersData, this.getName()+".");
 
-		root.init(modCounters);*/
+		root.init(modCounters);
 
 		System.out.println("###   INIT: "+serializedData);
 	}
