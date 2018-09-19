@@ -5,6 +5,7 @@ public class Counter
 	private int value;
 	private int maxValue;
 	private String name;
+	private boolean isComplited;
 
 	public Counter(String name, int maxValue) throws IndexOutOfBoundsException
 	{
@@ -15,19 +16,25 @@ public class Counter
 		this.name = name;
 		this.value = 0;
 		this.maxValue = maxValue;
+		this.isComplited = false;
 	}
 
 
 	public void add(int i) throws IndexOutOfBoundsException
 	{
+
 		setValue(value+i);
+		System.out.println("New counter value: "+name+"="+value);
 	}
 
 	public void setValue(int i) throws IndexOutOfBoundsException
 	{
-		if(i > maxValue || i < 0)
-			throw new IndexOutOfBoundsException("value must be between 0 and "+maxValue+" (this.maxValue)");
+		if(isComplited)
+			return;
 		value = i;
+
+		if(value >= maxValue)
+			isComplited = true;
 	}
 
 	public int getValue()
@@ -47,6 +54,6 @@ public class Counter
 
 	public boolean isComplited()
 	{
-		return value >= maxValue;
+		return isComplited;
 	}
 }

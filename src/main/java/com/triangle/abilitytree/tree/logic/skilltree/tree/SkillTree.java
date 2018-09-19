@@ -5,6 +5,8 @@ import com.triangle.abilitytree.tree.logic.skilltree.Counter;
 import com.triangle.abilitytree.tree.logic.skilltree.tree.skills.Skill;
 import com.triangle.abilitytree.tree.logic.skilltree.tree.skills.Util;
 import com.triangle.abilitytree.tree.logic.skilltree.tree.skills.allskills.RootSkill;
+import net.minecraft.client.Minecraft;
+import net.minecraftforge.fml.common.eventhandler.Event;
 
 import java.util.ArrayList;
 
@@ -53,6 +55,12 @@ public class SkillTree implements ISkillTree
 		return "sample";
 	}
 
+	@Override
+	public void passEvent(Event e)
+	{
+		System.out.println("### event pass on server: "+Minecraft.getMinecraft().world.isRemote);
+		this.root.passEvent(e);
+	}
 
 	void serialize(Skill skill, StringBuilder builder)
 	{
