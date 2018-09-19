@@ -2,6 +2,7 @@ package com.triangle.abilitytree.tree.logic.skilltree.tree.skills;
 
 import com.triangle.abilitytree.tree.logic.skilltree.Counter;
 import com.triangle.abilitytree.tree.logic.skilltree.tree.skills.Util;
+import net.minecraftforge.fml.common.eventhandler.Event;
 
 import java.util.ArrayList;
 
@@ -13,6 +14,8 @@ public abstract class Skill
 	private boolean hasChildren = false;
 
 	private ArrayList<Counter> counters;
+
+	private String name;
 
 	protected Skill()
 	{
@@ -47,8 +50,6 @@ public abstract class Skill
 				mySkillCounterData.remove(delete);
 		}
 
-
-
 		if(hasChildren)
 			for (Skill childSkill : childSkills)
 			{
@@ -56,6 +57,31 @@ public abstract class Skill
 			}
 	}
 
+	public void passEvent(Event e)
+	{
+		System.out.println("Event passed to "+this.name);
+
+		if(this.isComplited())
+			for (Skill childSkill : childSkills)
+				childSkill.passEvent(e);
+		else
+			this.handleEvent(e);
+	}
+
+	//TODO сделать абстрактной, убрать дефолтную заглушку
+	protected void handleEvent(Event e)
+	{
+		System.out.println("handling event on"+this.name);
+
+	}
+
+	public boolean isComplited()
+	{
+		for (Counter counter : counters)
+			if(!counter.isComplited())
+				return false;
+		return true;
+	}
 
 	protected Skill addCounter(Counter counter)
 	{
@@ -81,6 +107,11 @@ public abstract class Skill
 		return childSkills;
 	}
 
+	public Skill setName(String name)
+	{
+		this.name = name;
+		return this;
+	}
 
 	public Skill addChild(Skill child)
 	{

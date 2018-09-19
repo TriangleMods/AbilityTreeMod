@@ -7,6 +7,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.player.BonemealEvent;
+import net.minecraftforge.event.entity.player.FillBucketEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 
@@ -33,6 +35,26 @@ public class EventProcessor
 		player.sendMessage(new TextComponentString(skillTree.getDataAsString()));
 	}
 
+	//TODO сохранение при смерти
+
+	@SubscribeEvent
+	public void onKillEvent(BonemealEvent event)
+	{
+		EntityPlayer player = event.getEntityPlayer();
+		ISkillTree skillTree = player.getCapability(SkillTreeProvider.SKILL_TREE_CAPABILITY, null);
+
+		skillTree.passEvent(event);
+	}
+
+	@SubscribeEvent
+	public void onFillBucketEvent(FillBucketEvent event)
+	{
+		EntityPlayer player = event.getEntityPlayer();
+		ISkillTree skillTree = player.getCapability(SkillTreeProvider.SKILL_TREE_CAPABILITY, null);
+		skillTree.passEvent(event);
+		//event.
+	}
+
 	@SubscribeEvent
 	public void onJumpEvent(LivingEvent.LivingJumpEvent event)
 	{
@@ -42,7 +64,9 @@ public class EventProcessor
 			EntityPlayer player = (EntityPlayer)e;
 			ISkillTree skillTree = player.getCapability(SkillTreeProvider.SKILL_TREE_CAPABILITY, null);
 
-			player.sendMessage(new TextComponentString(skillTree.getDataAsString()));
+			//player.sendMessage(new TextComponentString(skillTree.getDataAsString()));
+
+			skillTree.passEvent(event);
 
 			/*ArrayList<Training> doneTrainings = new ArrayList<>();
 
