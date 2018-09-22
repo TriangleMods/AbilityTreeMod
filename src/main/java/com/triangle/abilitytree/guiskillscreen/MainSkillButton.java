@@ -9,7 +9,9 @@ public class MainSkillButton extends GuiButton
 
 		final ResourceLocation texture = new ResourceLocation("guiexperimetal:textures/gui/mainbuttons.png");
 
+
 		int u = 0;
+
 		int v = 0;
 
 		public MainSkillButton(int buttonId, int x, int y, int u)
