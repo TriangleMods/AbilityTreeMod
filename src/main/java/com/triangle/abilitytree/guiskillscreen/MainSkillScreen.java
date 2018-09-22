@@ -17,7 +17,7 @@ public class MainSkillScreen extends GuiScreen
 	AdventureMainButton adventureMainButton;
 	WorkingMainButton workingMainButton;
 	MiningMainButton miningMainButton;
-	//MainSkillButton amb;
+	MainSkillButton amb;
 
 
 	@Override
