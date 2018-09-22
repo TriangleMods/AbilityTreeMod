@@ -9,16 +9,12 @@ public class SkillTreeStorage implements Capability.IStorage<ISkillTree>
 	@Override
 	public NBTBase writeNBT(Capability<ISkillTree> capability, ISkillTree instance, EnumFacing side)
 	{
-		System.out.print("###  WRITE TO NBT");
 		return  new NBTTagString(instance.getDataAsString());
-		//return new NBTTagString(instance.getDataAsString());
 	}
 
 	@Override
 	public void readNBT(Capability<ISkillTree> capability, ISkillTree instance, EnumFacing side, NBTBase nbt)
 	{
-		System.out.print("###  READ FROM NBT");
 		instance.setDataFromString(((NBTTagString)nbt).getString());
-		//instance.setDataFromString(((NBTTagString)nbt).getString());
 	}
 }

@@ -58,7 +58,6 @@ public class SkillTree implements ISkillTree
 	@Override
 	public void passEvent(Event e)
 	{
-		System.out.println("### event pass on server: "+Minecraft.getMinecraft().world.isRemote);
 		this.root.passEvent(e);
 	}
 

@@ -15,7 +15,7 @@ public class SkillTreeProvider implements ICapabilitySerializable<NBTBase>
 
 	public SkillTreeProvider()
 	{
-		System.err.println("###   SkillTreeProvider constructed  ###");
+
 	}
 
 	@Override
