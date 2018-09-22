@@ -28,12 +28,8 @@ public class SkillTree implements ISkillTree
 	@Override
 	public String getDataAsString()
 	{
-		//FIXME бля
-		//return "oh, hi mark";
 		StringBuilder builder = new StringBuilder("");
 		serialize(root, builder);
-		//int length = builder.length();
-		//return builder.replace(length-1,length,"@").toString();
 		return builder.toString();
 	}
 
@@ -45,8 +41,6 @@ public class SkillTree implements ISkillTree
 		ArrayList<String> modCounters = Util.getOnlyStartedWithAndCut(countersData, this.getName()+".");
 
 		root.init(modCounters);
-
-		System.out.println("###   INIT: "+serializedData);
 	}
 
 	//TODO make abstract

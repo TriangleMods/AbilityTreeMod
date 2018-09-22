@@ -18,6 +18,6 @@ public enum EventType
 
 	public boolean isCorrectClass(Event event)
 	{
-		return event.getClass() == eventClass;
+		return event.getClass().equals(eventClass);
 	}
 }

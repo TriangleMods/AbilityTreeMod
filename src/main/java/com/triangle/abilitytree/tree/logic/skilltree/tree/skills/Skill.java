@@ -6,7 +6,6 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 
 import java.util.ArrayList;
 
-//TODO надо все закомментить
 
 public abstract class Skill
 {
@@ -22,7 +21,7 @@ public abstract class Skill
 		this.hasChildren = false;
 		this.childSkills = null;
 
-		//TODO оздавать не всегда
+		//TODO создавать не всегда
 		this.counters = new ArrayList<>();
 	}
 
@@ -32,6 +31,7 @@ public abstract class Skill
 		//Получили список всех счетчиков, принадлежащих этому скиллу
 		ArrayList<String> mySkillCounterData = Util.getOnlyStartedWithAndCut(countersData,this.getName()+".");
 		//TODO удалять из списка инициализированные
+
 
 		for (Counter counter : counters)
 		{
@@ -62,16 +62,22 @@ public abstract class Skill
 		System.out.println("Event passed to "+this.name);
 
 		if(this.isComplited())
+		{
+			if(childSkills != null)
 			for (Skill childSkill : childSkills)
 				childSkill.passEvent(e);
+		}
 		else
 			this.handleEvent(e);
 	}
 
-	//TODO сделать абстрактной, убрать дефолтную заглушку
 	protected void handleEvent(Event e)
 	{
-		System.out.println("handling event on"+this.name);
+		for (Counter counter : counters)
+		{
+			if(!counter.isComplited())
+				counter.handleEvent(e);
+		}
 
 	}
 
@@ -124,9 +130,5 @@ public abstract class Skill
 		return this;
 	}
 
-	/*
-	 protected  Skill ()
-	{
-		return this;
-	}*/
+
 }

@@ -9,19 +9,9 @@ public class JumpSkill1 extends Skill
 {
 	public JumpSkill1()
 	{
-		addCounter(new Counter("jump", 5));
+		addCounter(new Counter("jump", 5, LivingEvent.LivingJumpEvent.class));
 		addChild(new HarvestSkill2());
 		setName("Jumper");
-	}
-
-	@Override
-	protected void handleEvent(Event e)
-	{
-		super.handleEvent(e);
-		if(e instanceof LivingEvent.LivingJumpEvent)
-		{
-			this.getCounters().get(0).add(1);
-		}
 	}
 
 	@Override

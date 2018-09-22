@@ -39,6 +39,5 @@ public class MessageHandlerOnClient implements IMessageHandler<TreeDataMessageTo
 		EntityPlayer player = Minecraft.getMinecraft().player;
 		ISkillTree skillTree = player.getCapability(SkillTreeProvider.SKILL_TREE_CAPABILITY, null);
 		skillTree.setDataFromString(message.getData());
-		player.sendMessage(new TextComponentString("LogIn "+player.world.isRemote));
 	}
 }

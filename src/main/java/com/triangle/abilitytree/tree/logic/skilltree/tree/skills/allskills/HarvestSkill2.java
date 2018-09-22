@@ -8,29 +8,14 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 
 public class HarvestSkill2 extends Skill
 {
-	Counter boneCounter = new Counter("bonemeal",  7);
-	Counter bucketCounter = new Counter("queen",  3);
+	Counter boneCounter = new Counter("bonemeal",  7, BonemealEvent.class);
+	Counter bucketCounter = new Counter("queen",  3, FillBucketEvent.class);
 
 	public HarvestSkill2()
 	{
 		setName("ChildSkill");
 		addCounter(boneCounter);
 		addCounter(bucketCounter);
-	}
-
-	@Override
-	protected void handleEvent(Event e)
-	{
-		super.handleEvent(e);
-		if(e instanceof BonemealEvent)
-		{
-			boneCounter.add(1);
-		}
-		else if(e instanceof FillBucketEvent)
-		{
-			bucketCounter.add(1);
-		}
-
 	}
 
 	@Override
