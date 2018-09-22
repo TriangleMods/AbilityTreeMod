@@ -1,10 +1,13 @@
 package com.triangle.abilitytree.events;
 
 import com.triangle.abilitytree.dto.StaticField;
+import com.triangle.abilitytree.messaging.TreeDataMessageToClient;
+import com.triangle.abilitytree.proxy.CommonProxy;
 import com.triangle.abilitytree.tree.capabilities.ISkillTree;
 import com.triangle.abilitytree.tree.capabilities.SkillTreeProvider;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
@@ -16,29 +19,29 @@ import java.util.ArrayList;
 
 public class EventProcessor
 {
-	//static ArrayList<Training> trackingTrainings = new ArrayList<>();
-
-	/*public static void add(Training training)
-	{
-		trackingTrainings.add(training);
-	}*/
-
-	//TODO many lists to improve performance
-
 	@SubscribeEvent
 	public void onPlayerLogsIn(PlayerEvent.PlayerLoggedInEvent event)
 	{
 		EntityPlayer player = event.player;
-		System.err.println("###   LOGIN   ###");
 		ISkillTree skillTree = player.getCapability(SkillTreeProvider.SKILL_TREE_CAPABILITY, null);
 
-		player.sendMessage(new TextComponentString(skillTree.getDataAsString()));
+		TreeDataMessageToClient msg = new TreeDataMessageToClient(skillTree);
+		CommonProxy.simpleNetworkWrapper.sendTo(msg, (EntityPlayerMP)player);
+
 	}
 
-	//TODO сохранение при смерти
+	@SubscribeEvent
+	public void onPlayerClone(net.minecraftforge.event.entity.player.PlayerEvent.Clone event)
+	{
+		EntityPlayer player = event.getEntityPlayer();
+		ISkillTree skillTree = player.getCapability(SkillTreeProvider.SKILL_TREE_CAPABILITY, null);
+		ISkillTree oldSkillTree = event.getOriginal().getCapability(SkillTreeProvider.SKILL_TREE_CAPABILITY, null);
+
+		skillTree.setDataFromString(oldSkillTree.getDataAsString());
+	}
 
 	@SubscribeEvent
-	public void onKillEvent(BonemealEvent event)
+	public void onBonemealEvent(BonemealEvent event)
 	{
 		EntityPlayer player = event.getEntityPlayer();
 		ISkillTree skillTree = player.getCapability(SkillTreeProvider.SKILL_TREE_CAPABILITY, null);
@@ -52,7 +55,6 @@ public class EventProcessor
 		EntityPlayer player = event.getEntityPlayer();
 		ISkillTree skillTree = player.getCapability(SkillTreeProvider.SKILL_TREE_CAPABILITY, null);
 		skillTree.passEvent(event);
-		//event.
 	}
 
 	@SubscribeEvent
@@ -64,40 +66,7 @@ public class EventProcessor
 			EntityPlayer player = (EntityPlayer)e;
 			ISkillTree skillTree = player.getCapability(SkillTreeProvider.SKILL_TREE_CAPABILITY, null);
 
-			//player.sendMessage(new TextComponentString(skillTree.getDataAsString()));
-
 			skillTree.passEvent(event);
-
-			/*ArrayList<Training> doneTrainings = new ArrayList<>();
-
-			if(event.getEntity().world.isRemote)
-				StaticField.setValue(StaticField.getSkill().getCounters()[0].getValue()+1);
-
-			for (Training training : trackingTrainings)
-			{
-				for (TrainingHandler handler : training.getTrainingEventHandlers())
-				{
-					TrainingCounter counter = handler.getCounter();
-					if(!counter.isComplited())
-					{
-						if(handler.isValidEvent(event))
-						{
-							handler.handle(event);
-
-							if(counter.isComplited())
-								if(training.isComplited())
-								{
-									//TODO universal entity casting
-									training.checkComplited((EntityPlayer) event.getEntity());
-									doneTrainings.add(training);
-								}
-						}
-					}
-				}
-			}
-
-			if(doneTrainings.size()>0)
-				trackingTrainings.removeAll(doneTrainings);*/
 		}
 	}
 }

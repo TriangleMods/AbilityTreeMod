@@ -16,9 +16,6 @@ public class CapabilityHandler
 	{
 
 		if (!(event.getObject() instanceof EntityPlayer)) return;
-
-		System.err.println("###   ATTACH   ###");
 		event.addCapability(SKILL_TREE_CAPABILITY, new SkillTreeProvider());
-		System.err.println("###   Added    ###");
 	}
 }
