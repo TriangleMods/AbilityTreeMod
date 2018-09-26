@@ -13,7 +13,7 @@ public class WitcheryMainButton extends GuiButton
 
 	public WitcheryMainButton(int buttonId, int x, int y)
 	{
-		super(buttonId, x, y, 51, 48, "");
+		super(buttonId, x, y, 50, 50, "");
 	}
 
 	@Override
@@ -33,7 +33,7 @@ public class WitcheryMainButton extends GuiButton
 			}
 			if(hovered)
 			{
-				v = 56;
+				v = 58;
 			}
 			else
 			{

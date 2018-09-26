@@ -1,4 +1,77 @@
 package com.triangle.abilitytree.guiskillscreen.skillguiscreens;
 
-public class AdventureSkillScreen {
+import com.triangle.abilitytree.dto.StaticField;
+import com.triangle.abilitytree.guiskillscreen.MainSkillScreen;
+import com.triangle.abilitytree.guiskillscreen.skillbuttons.SimpleFirstButton;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextComponentString;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class AdventureSkillScreen extends GuiScreen {
+
+	final ResourceLocation texture = new ResourceLocation("guiexperimetal:textures/gui/background_gui_skill_1.png");
+
+	GuiButton CloseButton;
+	SimpleFirstButton firstButton;
+
+	@Override
+	public void initGui() {
+		buttonList.clear();
+		buttonList.add(firstButton = new SimpleFirstButton(1, width / 2, height / 2, StaticField.getSkill()));
+
+		buttonList.add(CloseButton = new GuiButton(0, (width / 2) - 128, height/2 - 128, 100, 20, "Close"));
+
+		super.initGui();
+	}
+
+	@Override
+	protected void actionPerformed(GuiButton button) throws IOException {
+		switch (button.id)
+		{
+			case 0:
+				mc.displayGuiScreen(null);
+				break;
+			case 1:
+				Minecraft.getMinecraft().player.sendMessage(new TextComponentString("button is clicked"));
+				break;
+		}
+
+
+	}
+
+	@Override
+	public boolean doesGuiPauseGame() {
+		return false;
+	}
+
+	@Override
+	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+
+		int centerX = (width / 2);
+		int centerY = (height / 2);
+
+
+		Minecraft.getMinecraft().renderEngine.bindTexture(texture);
+
+		drawTexturedModalRect(width / 2 - 128, height / 2 - 128, 0, 0, 256, 256);
+
+		CloseButton.drawButton(mc, mouseX, mouseY, partialTicks);
+		firstButton.drawButton(mc, mouseX, mouseY, partialTicks);
+
+		if (mouseX >= centerX && mouseX <= centerX + 10 && mouseY >= centerY && mouseY <= centerY + 10) {
+			{
+				List<String> text = new ArrayList<String>();
+				text.add(firstButton.skillDTO.getName());
+				text.add("Jump: " + firstButton.skillDTO.getCounters()[0].getValue());
+				drawHoveringText(text, mouseX, mouseY);
+			}
+
+		}
+	}
 }

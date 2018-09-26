@@ -8,14 +8,14 @@ public class AdventureMainButton extends GuiButton
 {
 	final ResourceLocation texture = new ResourceLocation("guiexperimetal:textures/gui/mainbuttons.png");
 
-	int u = 102;
+	int u = 101;
 	int v = 0;
 
 
 
 	public AdventureMainButton(int buttonId, int x, int y)
 	{
-		super(buttonId, x, y, 51, 48, "");
+		super(buttonId, x, y, 50, 50, "");
 	}
 
 	@Override
@@ -35,7 +35,7 @@ public class AdventureMainButton extends GuiButton
 			}
 			if(hovered)
 			{
-				v = 56;
+				v = 58;
 			}
 			else
 			{

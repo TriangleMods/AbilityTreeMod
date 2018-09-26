@@ -1,14 +1,14 @@
 package com.triangle.abilitytree.guiskillscreen.skillguiscreens;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.MapItemRenderer;
 import net.minecraft.util.ResourceLocation;
 
 import java.io.IOException;
 
-public class CombatSkillScreen extends GuiScreen
+public class WitcherySkillScreen extends GuiScreen
 {
 
 	final ResourceLocation texture = new ResourceLocation("guiexperimetal:textures/gui/background_gui_skill_2.png");

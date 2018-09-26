@@ -8,14 +8,14 @@ public class MiningMainButton extends GuiButton
 {
 	final ResourceLocation texture = new ResourceLocation("guiexperimetal:textures/gui/mainbuttons.png");
 
-	int u = 204;
+	int u = 201;
 	int v = 0;
 
 
 
 	public MiningMainButton(int buttonId, int x, int y)
 	{
-		super(buttonId, x, y, 52, 48, "");
+		super(buttonId, x, y, 50, 50, "");
 	}
 
 	@Override
@@ -35,7 +35,7 @@ public class MiningMainButton extends GuiButton
 			}
 			if(hovered)
 			{
-				v = 56;
+				v = 58;
 			}
 			else
 			{

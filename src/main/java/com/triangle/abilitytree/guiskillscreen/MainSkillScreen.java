@@ -1,7 +1,7 @@
 package com.triangle.abilitytree.guiskillscreen;
 
 import com.triangle.abilitytree.guiskillscreen.mainskillbuttons.*;
-import com.triangle.abilitytree.guiskillscreen.skillguiscreens.CombatSkillScreen;
+import com.triangle.abilitytree.guiskillscreen.skillguiscreens.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -12,26 +12,27 @@ import java.io.IOException;
 
 public class MainSkillScreen extends GuiScreen
 {
+	GuiButton CloseButton;
 	CombatMainButton combatMainButton;
 	WitcheryMainButton witcheryMainButton;
 	AdventureMainButton adventureMainButton;
 	WorkingMainButton workingMainButton;
 	MiningMainButton miningMainButton;
-
-	//MainSkillButton amb;
-
+	
 
 
 	@Override
 	public void initGui()
 	{
 		buttonList.clear();
-		buttonList.add(combatMainButton = new CombatMainButton(1,width/2 - 25 - 102,height/2));
-		buttonList.add(witcheryMainButton = new WitcheryMainButton(2,width/2 - 25 - 51,height/2));
+
+		buttonList.add(combatMainButton = new CombatMainButton(1,width/2 - 25 - 100,height/2));
+		buttonList.add(witcheryMainButton = new WitcheryMainButton(2,width/2 - 25 - 50,height/2));
 		buttonList.add(adventureMainButton = new AdventureMainButton(3,width/2 - 25,height/2));
-		buttonList.add(workingMainButton = new WorkingMainButton(4,width/2 + 26,height/2));
-		buttonList.add(miningMainButton = new MiningMainButton(5,width/2 + 26 + 51,height/2));
-		//buttonList.add(amb = new MainSkillButton(3,width/2 + 26, height/2,102));
+		buttonList.add(workingMainButton = new WorkingMainButton(4,width/2 + 25,height/2));
+		buttonList.add(miningMainButton = new MiningMainButton(5,width/2 + 25 + 50,height/2));
+
+		buttonList.add(CloseButton = new GuiButton(0, (width / 2) + 25, (height / 2) - 25, 100, 20, "Close"));
 
 	}
 
@@ -40,20 +41,23 @@ public class MainSkillScreen extends GuiScreen
 	{
 		switch (button.id)
 		{
+			case 0:
+				mc.displayGuiScreen(null);
+				break;
 			case 1:
-				Minecraft.getMinecraft().player.sendMessage(new TextComponentString("combat button is clicked"));
-				break;
-			case 2:
-				Minecraft.getMinecraft().player.sendMessage(new TextComponentString("witchery button is clicked"));
-				break;
-			case 3:
 				FMLCommonHandler.instance().showGuiScreen(new CombatSkillScreen());
 				break;
+			case 2:
+				FMLCommonHandler.instance().showGuiScreen(new WitcherySkillScreen());
+				break;
+			case 3:
+				FMLCommonHandler.instance().showGuiScreen(new AdventureSkillScreen());
+				break;
 			case 4:
-				Minecraft.getMinecraft().player.sendMessage(new TextComponentString("working button is clicked"));
+				FMLCommonHandler.instance().showGuiScreen(new WorkingSkillScreen());
 				break;
 			case 5:
-				Minecraft.getMinecraft().player.sendMessage(new TextComponentString("mining button is clicked"));
+				FMLCommonHandler.instance().showGuiScreen(new MiningSkillScreen());
 				break;
 		}
 	}
