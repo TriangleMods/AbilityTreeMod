@@ -10,13 +10,13 @@ public class SimpleFirstButton extends GuiButton
 	int u = 0;
 	int v = 0;
 
-	final ResourceLocation texture = new ResourceLocation("guiexperimetal:textures/gui/buttons.png");
+	final ResourceLocation texture = new ResourceLocation("guiexperimetal:textures/gui/button.png");
 
 	public final ISkillDTO skillDTO;
 
 	public SimpleFirstButton(int buttonId, int x, int y, ISkillDTO skillDTO)
 	{
-		super(buttonId,x,y,10,10,"");
+		super(buttonId,x,y,20,20,"");
 		this.skillDTO = skillDTO;
 	}
 

@@ -19,13 +19,15 @@ public class AdventureSkillScreen extends GuiScreen {
 
 	GuiButton CloseButton;
 	SimpleFirstButton firstButton;
+	SimpleFirstButton secondButton;
 
 	@Override
 	public void initGui() {
 		buttonList.clear();
-		buttonList.add(firstButton = new SimpleFirstButton(1, width / 2, height / 2, StaticField.getSkill()));
+		buttonList.add(firstButton = new SimpleFirstButton(1, (width / 2) - 10, (height / 2) - 10, StaticField.getSkill()));
+		buttonList.add(secondButton = new SimpleFirstButton(1, (width / 2) - 67, (height / 2) - 57, StaticField.getSkill()));
 
-		buttonList.add(CloseButton = new GuiButton(0, (width / 2) - 128, height/2 - 128, 100, 20, "Close"));
+		buttonList.add(CloseButton = new GuiButton(0, (width / 2) + 28, height/2 + 128, 100, 20, "Close"));
 
 		super.initGui();
 	}
@@ -61,10 +63,13 @@ public class AdventureSkillScreen extends GuiScreen {
 
 		drawTexturedModalRect(width / 2 - 128, height / 2 - 128, 0, 0, 256, 256);
 
-		CloseButton.drawButton(mc, mouseX, mouseY, partialTicks);
-		firstButton.drawButton(mc, mouseX, mouseY, partialTicks);
 
-		if (mouseX >= centerX && mouseX <= centerX + 10 && mouseY >= centerY && mouseY <= centerY + 10) {
+		firstButton.drawButton(mc, mouseX, mouseY, partialTicks);
+		secondButton.drawButton(mc, mouseX, mouseY, partialTicks);
+
+		//центральная кнопка
+		//найти альтернативу отображения потому что так не хочет работать ибо координаты не воспринимает от центра
+		if (mouseX >= centerX && mouseX <= centerX + 20 && mouseY >= centerY && mouseY <= centerY + 10) {
 			{
 				List<String> text = new ArrayList<String>();
 				text.add(firstButton.skillDTO.getName());
@@ -73,5 +78,7 @@ public class AdventureSkillScreen extends GuiScreen {
 			}
 
 		}
+
+		CloseButton.drawButton(mc, mouseX, mouseY, partialTicks);
 	}
 }
