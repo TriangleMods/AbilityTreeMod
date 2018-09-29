@@ -21,7 +21,6 @@ public class EventProcessor
 	public void onPlayerLogsIn(PlayerEvent.PlayerLoggedInEvent event)
 	{
 		ISkillTree skillTree = CapabilityExtractor.getSkillTree(event.player);
-		// player.getCapability(SkillTreeProvider.SKILL_TREE_CAPABILITY, null);
 
 		TreeDataMessageToClient msg = new TreeDataMessageToClient(skillTree);
 		CommonProxy.simpleNetworkWrapper.sendTo(msg, (EntityPlayerMP)event.player);
@@ -31,9 +30,7 @@ public class EventProcessor
 	@SubscribeEvent
 	public void onPlayerClone(net.minecraftforge.event.entity.player.PlayerEvent.Clone event)
 	{
-		//EntityPlayer player = event.getEntityPlayer();
 		ISkillTree skillTree = CapabilityExtractor.getSkillTree(event.getEntityPlayer());
-        //player.getCapability(SkillTreeProvider.SKILL_TREE_CAPABILITY, null);
 		ISkillTree oldSkillTree = event.getOriginal().getCapability(SkillTreeProvider.SKILL_TREE_CAPABILITY, null);
 
 		skillTree.setDataFromString(oldSkillTree.getDataAsString());
@@ -42,8 +39,6 @@ public class EventProcessor
 	@SubscribeEvent
 	public void onBonemealEvent(BonemealEvent event)
 	{
-		//EntityPlayer player = event.getEntityPlayer();
-		//ISkillTree skillTree = player.getCapability(SkillTreeProvider.SKILL_TREE_CAPABILITY, null);
         ISkillTree skillTree = CapabilityExtractor.getSkillTree(event.getEntityPlayer());
 		skillTree.passEvent(event);
 	}
@@ -51,8 +46,6 @@ public class EventProcessor
 	@SubscribeEvent
 	public void onFillBucketEvent(FillBucketEvent event)
 	{
-		//EntityPlayer player = event.getEntityPlayer();
-		//ISkillTree skillTree = player.getCapability(SkillTreeProvider.SKILL_TREE_CAPABILITY, null);
         ISkillTree skillTree = CapabilityExtractor.getSkillTree(event.getEntityPlayer());
 		skillTree.passEvent(event);
 	}
@@ -63,8 +56,6 @@ public class EventProcessor
 		Entity e = event.getEntity();
 		if(e instanceof EntityPlayer)
 		{
-			//EntityPlayer player = (EntityPlayer)e;
-			//ISkillTree skillTree = player.getCapability(SkillTreeProvider.SKILL_TREE_CAPABILITY, null);
             ISkillTree skillTree = CapabilityExtractor.getSkillTree((EntityPlayer)e);
 			skillTree.passEvent(event);
 		}
