@@ -1,12 +1,10 @@
 package com.triangle.abilitytree.guiexample;
 
-import com.triangle.abilitytree.AbilityTreeMod;
-import com.triangle.abilitytree.dto.ISkillDTO;
+
+import com.triangle.abilitytree.tree.logic.skilltree.tree.skills.Skill;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.TextComponentString;
 
 public class skillButton extends GuiButton
 {
@@ -20,11 +18,11 @@ public class skillButton extends GuiButton
 
 	boolean cover = true;
 
-	public final ISkillDTO skillDTO;
+	public final Skill skillDTO;
 
-	public skillButton(int buttonId, int x, int y, ISkillDTO skillDTO) {
+	public skillButton(int buttonId, int x, int y, Skill skill) {
 		super(buttonId, x, y, 37, 34, "");
-		this.skillDTO = skillDTO;
+		this.skillDTO = skill;
 	}
 
 	@Override

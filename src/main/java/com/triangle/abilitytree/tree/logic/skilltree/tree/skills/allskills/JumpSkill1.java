@@ -14,11 +14,4 @@ public class JumpSkill1 extends Skill
 		setName("Jumper");
 	}
 
-	@Override
-	public String getName()
-	{
-		return "f1";
-	}
-
-
 }

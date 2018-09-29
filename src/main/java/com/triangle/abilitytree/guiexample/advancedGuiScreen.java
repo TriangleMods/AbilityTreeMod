@@ -1,7 +1,8 @@
 package com.triangle.abilitytree.guiexample;
 
 
-import com.triangle.abilitytree.dto.StaticField;
+import com.triangle.abilitytree.tree.capabilities.CapabilityExtractor;
+import com.triangle.abilitytree.tree.logic.skilltree.tree.skills.Skill;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -23,8 +24,10 @@ public class advancedGuiScreen extends GuiScreen
 	@Override
 	public void initGui()
 	{
+		Skill someSkill =  CapabilityExtractor.getSkillTree(Minecraft.getMinecraft().player).getRootSkill().getChildSkills().get(0);
+
 		buttonList.clear();
-		buttonList.add(skillB = new skillButton(SKILLB,width/2, height/2, StaticField.getSkill()));
+		buttonList.add(skillB = new skillButton(SKILLB,width/2, height/2,someSkill));
 
 		super.initGui();
 	}
@@ -62,7 +65,7 @@ public class advancedGuiScreen extends GuiScreen
 		{
 			List<String> text = new ArrayList<String>();
 			text.add(skillB.skillDTO.getName());
-			text.add("Jump: " + skillB.skillDTO.getCounters()[0].getValue());
+			text.add("Jump: " + skillB.skillDTO.getCounters().get(0).getValue());
 			drawHoveringText(text, mouseX, mouseY);
 		}
 

@@ -5,7 +5,6 @@ import com.triangle.abilitytree.tree.logic.skilltree.Counter;
 import com.triangle.abilitytree.tree.logic.skilltree.tree.skills.Skill;
 import com.triangle.abilitytree.tree.logic.skilltree.tree.skills.Util;
 import com.triangle.abilitytree.tree.logic.skilltree.tree.skills.allskills.RootSkill;
-import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
 import java.util.ArrayList;
@@ -20,12 +19,6 @@ public class SkillTree implements ISkillTree
 	}
 
 
-	/*public SkillTree(String serializedData)
-	{
-		setDataFromString(serializedData);
-	}*/
-
-	@Override
 	public String getDataAsString()
 	{
 		StringBuilder builder = new StringBuilder("");
@@ -33,7 +26,6 @@ public class SkillTree implements ISkillTree
 		return builder.toString();
 	}
 
-	@Override
 	public void setDataFromString(String serializedData)
 	{
 
@@ -49,7 +41,6 @@ public class SkillTree implements ISkillTree
 		return "sample";
 	}
 
-	@Override
 	public void passEvent(Event e)
 	{
 		this.root.passEvent(e);
@@ -59,7 +50,7 @@ public class SkillTree implements ISkillTree
 	{
 		for (Counter counter : skill.getCounters())
 		{
-			builder.append(this.getName() +'.'+ skill.getName() +'.'+ counter.getName() +':'+counter.getValue() +';');
+			builder.append(this.getName() +'.'+ skill.getName() +'.'+ counter.getDescription() +':'+counter.getValue() +';');
 		}
 
 

@@ -1,6 +1,5 @@
 package com.triangle.abilitytree.guiskillscreen;
 
-import com.triangle.abilitytree.guiskillscreen.mainskillbuttons.*;
 import com.triangle.abilitytree.guiskillscreen.skillguiscreens.CombatSkillScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -12,11 +11,11 @@ import java.io.IOException;
 
 public class MainSkillScreen extends GuiScreen
 {
-	CombatMainButton combatMainButton;
-	WitcheryMainButton witcheryMainButton;
-	AdventureMainButton adventureMainButton;
-	WorkingMainButton workingMainButton;
-	MiningMainButton miningMainButton;
+	MainButton combatMainButton;
+	MainButton witcheryMainButton;
+	MainButton adventureMainButton;
+	MainButton workingMainButton;
+	MainButton miningMainButton;
 
 	//MainSkillButton amb;
 
@@ -26,11 +25,11 @@ public class MainSkillScreen extends GuiScreen
 	public void initGui()
 	{
 		buttonList.clear();
-		buttonList.add(combatMainButton = new CombatMainButton(1,width/2 - 25 - 102,height/2));
-		buttonList.add(witcheryMainButton = new WitcheryMainButton(2,width/2 - 25 - 51,height/2));
-		buttonList.add(adventureMainButton = new AdventureMainButton(3,width/2 - 25,height/2));
-		buttonList.add(workingMainButton = new WorkingMainButton(4,width/2 + 26,height/2));
-		buttonList.add(miningMainButton = new MiningMainButton(5,width/2 + 26 + 51,height/2));
+		buttonList.add(combatMainButton = new MainButton(1,width/2 - 25 - 102,height/2, MainButton.TextureOffset.COMBAT));
+		buttonList.add(witcheryMainButton = new MainButton(2,width/2 - 25 - 51,height/2, MainButton.TextureOffset.WITCHERY));
+		buttonList.add(adventureMainButton = new MainButton(3,width/2 - 25,height/2, MainButton.TextureOffset.ADVENTURE));
+		buttonList.add(workingMainButton = new MainButton(4,width/2 + 26,height/2, MainButton.TextureOffset.WORKING));
+		buttonList.add(miningMainButton = new MainButton(5,width/2 + 26 + 51,height/2, MainButton.TextureOffset.MINING));
 		//buttonList.add(amb = new MainSkillButton(3,width/2 + 26, height/2,102));
 
 	}

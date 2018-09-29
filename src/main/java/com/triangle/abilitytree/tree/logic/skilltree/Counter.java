@@ -1,24 +1,25 @@
 package com.triangle.abilitytree.tree.logic.skilltree;
 
 import com.triangle.abilitytree.events.UpdateDebugger;
+import com.triangle.abilitytree.interfaces.ICounter;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
-public class Counter
+public class Counter implements ICounter
 {
 	private int value;
 	private int maxValue;
-	private String name;
+	private String description;
 	private boolean isComplited;
 	Class<? extends Event> eventType;
 
 	//TODO List of event-listeners, binded to counters
-	public Counter(String name, int maxValue, Class<? extends Event> eventType) throws IndexOutOfBoundsException
+	public Counter(String description, int maxValue, Class<? extends Event> eventType) throws IndexOutOfBoundsException
 	{
 		if(maxValue <= 0)
 			throw new IndexOutOfBoundsException("maxValue must be greater than 0");
 
 
-		this.name = name;
+		this.description = description;
 		this.value = 0;
 		this.maxValue = maxValue;
 		this.isComplited = false;
@@ -35,7 +36,7 @@ public class Counter
 	@Override
 	public String toString()
 	{
-		return name+": "+value+"/"+maxValue;
+		return description+": "+value+"/"+maxValue;
 	}
 
 	public void add(int i) throws IndexOutOfBoundsException
@@ -55,21 +56,24 @@ public class Counter
 		UpdateDebugger.sendString(this.toString());
 	}
 
+	@Override
 	public int getValue()
 	{
 		return value;
 	}
 
+	@Override
 	public int getMaxValue()
 	{
 		return maxValue;
 	}
 
-	public String getName()
-	{
-		return name;
+	@Override
+	public String getDescription() {
+		return description;
 	}
 
+	@Override
 	public boolean isComplited()
 	{
 		return isComplited;

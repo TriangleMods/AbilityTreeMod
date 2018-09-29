@@ -1,6 +1,6 @@
-package com.triangle.abilitytree.dto;
+package com.triangle.abilitytree.interfaces;
 
-public interface ICounterDTO
+public interface ICounter
 {
 	int getValue();
 	int getMaxValue();

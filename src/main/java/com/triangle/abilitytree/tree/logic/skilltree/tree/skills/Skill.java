@@ -1,5 +1,6 @@
 package com.triangle.abilitytree.tree.logic.skilltree.tree.skills;
 
+
 import com.triangle.abilitytree.tree.logic.skilltree.Counter;
 import com.triangle.abilitytree.tree.logic.skilltree.tree.skills.Util;
 import net.minecraftforge.fml.common.eventhandler.Event;
@@ -14,6 +15,8 @@ public abstract class Skill
 
 	private ArrayList<Counter> counters;
 
+	private ArrayList<String> rewards;
+
 	private String name;
 
 	protected Skill()
@@ -23,6 +26,8 @@ public abstract class Skill
 
 		//TODO создавать не всегда
 		this.counters = new ArrayList<>();
+
+		this.rewards = new ArrayList<>();
 	}
 
 	public void init(ArrayList<String> countersData)
@@ -38,7 +43,7 @@ public abstract class Skill
 			String delete = null;
 			for (String s : mySkillCounterData)
 			{
-				if(s.indexOf(counter.getName()+":")==0)
+				if(s.indexOf(counter.getDescription()+":")==0)
 				{
 					counter.setValue(Integer.parseInt(s.split(":")[1]));
 					delete = s;
@@ -81,6 +86,7 @@ public abstract class Skill
 
 	}
 
+
 	public boolean isComplited()
 	{
 		for (Counter counter : counters)
@@ -95,28 +101,30 @@ public abstract class Skill
 		return this;
 	}
 
-	public ArrayList<Counter> getCounters()
-	{
+	public ArrayList<Counter> getCounters(){
 		return counters;
 	}
 
-
-	public abstract String getName();
 
 	public boolean hasChildren()
 	{
 		return hasChildren;
 	}
 
-	public ArrayList<Skill> getChildSkills()
-	{
+
+	public ArrayList<Skill> getChildSkills(){
 		return childSkills;
 	}
 
-	public Skill setName(String name)
+	protected Skill setName(String name)
 	{
 		this.name = name;
 		return this;
+	}
+
+	public String getName()
+	{
+		return name;
 	}
 
 	public Skill addChild(Skill child)
@@ -130,5 +138,13 @@ public abstract class Skill
 		return this;
 	}
 
+	public ArrayList<String> getRewards() {
+		return rewards;
+	}
 
+	protected Skill addReward(String reward)
+	{
+		rewards.add(reward);
+		return this;
+	}
 }

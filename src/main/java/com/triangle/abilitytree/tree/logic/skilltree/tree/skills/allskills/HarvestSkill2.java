@@ -13,14 +13,9 @@ public class HarvestSkill2 extends Skill
 
 	public HarvestSkill2()
 	{
-		setName("ChildSkill");
+		setName("HarvestSkill");
 		addCounter(boneCounter);
 		addCounter(bucketCounter);
 	}
 
-	@Override
-	public String getName()
-	{
-		return "c1";
-	}
 }

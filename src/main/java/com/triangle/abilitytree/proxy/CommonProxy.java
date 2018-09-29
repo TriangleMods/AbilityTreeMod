@@ -1,6 +1,5 @@
 package com.triangle.abilitytree.proxy;
 
-import com.triangle.abilitytree.dto.StaticField;
 import com.triangle.abilitytree.events.EventProcessor;
 import com.triangle.abilitytree.tree.capabilities.CapabilityHandler;
 import com.triangle.abilitytree.tree.capabilities.ISkillTree;

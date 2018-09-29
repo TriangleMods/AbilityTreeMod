@@ -1,6 +1,9 @@
 package com.triangle.abilitytree.tree.logic.skilltree.tree.skills.allskills;
 
+import com.triangle.abilitytree.tree.logic.skilltree.Counter;
 import com.triangle.abilitytree.tree.logic.skilltree.tree.skills.Skill;
+
+import java.util.ArrayList;
 
 public class RootSkill extends Skill
 {
@@ -8,13 +11,5 @@ public class RootSkill extends Skill
 	{
 		setName("Root");
 		addChild(new JumpSkill1());
-	}
-
-
-
-	@Override
-	public String getName()
-	{
-		return "root";
 	}
 }

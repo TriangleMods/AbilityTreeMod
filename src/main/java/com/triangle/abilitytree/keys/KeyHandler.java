@@ -1,5 +1,6 @@
 package com.triangle.abilitytree.keys;
 
+
 import com.triangle.abilitytree.guiexample.advancedGuiScreen;
 import com.triangle.abilitytree.guiskillscreen.MainSkillScreen;
 import net.minecraft.client.Minecraft;
@@ -19,7 +20,7 @@ public class KeyHandler
 
 	static
 	{
-		keyBindings = new KeyBinding[2];
+		keyBindings = new KeyBinding[3];
 		keyBindings[0] = new KeyBinding("key.refill.desc",Keyboard.KEY_P,"key.examplemod.category");
 		keyBindings[1] = new KeyBinding("key.info.desc",Keyboard.KEY_I,"key.examplemod.category");
 
@@ -40,5 +41,6 @@ public class KeyHandler
 		{
 			FMLCommonHandler.instance().showGuiScreen(new MainSkillScreen());
 		}
+
 	}
 }
