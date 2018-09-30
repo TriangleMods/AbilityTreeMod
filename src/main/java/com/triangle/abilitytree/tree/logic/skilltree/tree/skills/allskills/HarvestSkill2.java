@@ -16,6 +16,7 @@ public class HarvestSkill2 extends Skill
 		setName("HarvestSkill");
 		addCounter(boneCounter);
 		addCounter(bucketCounter);
+		setCoord(100,100);
 	}
 
 }

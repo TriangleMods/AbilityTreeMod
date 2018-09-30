@@ -26,8 +26,7 @@ public class SkillTree implements ISkillTree
 		return builder.toString();
 	}
 
-	public void setDataFromString(String serializedData)
-	{
+	public void setDataFromString(String serializedData) {
 
 		String[] countersData = serializedData.split(";");
 		ArrayList<String> modCounters = Util.getOnlyStartedWithAndCut(countersData, this.getName()+".");

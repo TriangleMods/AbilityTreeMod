@@ -5,6 +5,7 @@ import com.triangle.abilitytree.tree.logic.skilltree.Counter;
 import com.triangle.abilitytree.tree.logic.skilltree.tree.skills.Util;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 
@@ -18,6 +19,9 @@ public abstract class Skill
 	private ArrayList<String> rewards;
 
 	private String name;
+	private Point coord;
+
+	SkillInitChecker initData = new SkillInitChecker();
 
 	protected Skill()
 	{
@@ -32,6 +36,12 @@ public abstract class Skill
 
 	public void init(ArrayList<String> countersData)
 	{
+		//TODO проверить, насколько оптимально проверять инициализацию здесь, и нет ли резона вылетать
+		//=====[  skill init tests   ]=====
+		if(!this.initData.isInitializedProperly())
+			System.err.println("### ERROR: Skill isn't initialized properly: \n name: "+this.name+"\n coord: "+this.coord);
+		//============
+
 		//TODO не передавать уже использованные счетчики
 		//Получили список всех счетчиков, принадлежащих этому скиллу
 		ArrayList<String> mySkillCounterData = Util.getOnlyStartedWithAndCut(countersData,this.getName()+".");
@@ -101,6 +111,14 @@ public abstract class Skill
 		return this;
 	}
 
+	protected Skill setCoord(int x, int y)
+	{
+		coord = new Point(x, y);
+		initData.setCoord();
+
+		return this;
+	}
+
 	public ArrayList<Counter> getCounters(){
 		return counters;
 	}
@@ -119,6 +137,8 @@ public abstract class Skill
 	protected Skill setName(String name)
 	{
 		this.name = name;
+		initData.setName();
+
 		return this;
 	}
 

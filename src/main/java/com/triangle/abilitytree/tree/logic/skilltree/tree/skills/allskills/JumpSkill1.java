@@ -12,6 +12,7 @@ public class JumpSkill1 extends Skill
 		addCounter(new Counter("jump", 5, LivingEvent.LivingJumpEvent.class));
 		addChild(new HarvestSkill2());
 		setName("Jumper");
+		setCoord(50,50);
 	}
 
 }
