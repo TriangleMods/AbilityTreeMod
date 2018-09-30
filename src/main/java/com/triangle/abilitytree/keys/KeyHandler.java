@@ -1,6 +1,6 @@
 package com.triangle.abilitytree.keys;
 
-import com.triangle.abilitytree.guiskillscreen.MainSkillScreen;
+import com.triangle.abilitytree.guiskillscreen.skillguiscreens.SkillTreeScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
@@ -32,7 +32,7 @@ public class KeyHandler
 		EntityPlayer player = Minecraft.getMinecraft().player;
 		if(keyBindings[0].isPressed())//Call Main skill screen
 		{
-			FMLCommonHandler.instance().showGuiScreen(new MainSkillScreen());
+			FMLCommonHandler.instance().showGuiScreen(new SkillTreeScreen());
 		}
 	}
 }

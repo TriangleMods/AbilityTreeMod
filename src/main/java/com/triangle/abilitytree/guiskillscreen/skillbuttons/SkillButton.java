@@ -5,7 +5,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.util.ResourceLocation;
 
-public class SimpleFirstButton extends GuiButton
+public class SkillButton extends GuiButton
 {
 	int u = 0;
 	int v = 0;
@@ -14,7 +14,7 @@ public class SimpleFirstButton extends GuiButton
 
 	public final Skill skill;
 
-	public SimpleFirstButton(int buttonId, int x, int y, Skill skill)
+	public SkillButton(int buttonId, int x, int y, Skill skill)
 	{
 		super(buttonId,x,y,20,20,"");
 		this.skill = skill;
@@ -27,4 +27,10 @@ public class SimpleFirstButton extends GuiButton
 
 		drawTexturedModalRect(x, y, u, v, width, height);
 	}
+
+	//TODO дулаешь функцию проверки координат
+	//public void isMouseOnButton(MouseX, MouseY)
+
+	//TODO делаешь функцию, генерирующую необходимые строки из скилла
+	//public List<String> getTextStrings()
 }

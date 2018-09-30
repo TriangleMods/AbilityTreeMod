@@ -18,11 +18,11 @@ public class skillButton extends GuiButton
 
 	boolean cover = true;
 
-	public final Skill skillDTO;
+	public final Skill skill;
 
 	public skillButton(int buttonId, int x, int y, Skill skill) {
 		super(buttonId, x, y, 37, 34, "");
-		this.skillDTO = skill;
+		this.skill = skill;
 	}
 
 	@Override

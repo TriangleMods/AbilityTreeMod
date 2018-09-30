@@ -1,6 +1,6 @@
 package com.triangle.abilitytree.guiskillscreen.skillguiscreens;
 
-import com.triangle.abilitytree.guiskillscreen.skillbuttons.SimpleFirstButton;
+import com.triangle.abilitytree.guiskillscreen.skillbuttons.SkillButton;
 import com.triangle.abilitytree.tree.capabilities.CapabilityExtractor;
 import com.triangle.abilitytree.tree.logic.skilltree.tree.skills.Skill;
 import net.minecraft.client.Minecraft;
@@ -13,13 +13,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SkillScreen extends GuiScreen {
+public class SkillTreeScreen extends GuiScreen {
 
 	final ResourceLocation texture = new ResourceLocation("guiexperimetal:textures/gui/background_gui_skill_1.png");
 
 	GuiButton CloseButton;
-	SimpleFirstButton firstButton;
-	SimpleFirstButton secondButton;
+	SkillButton firstButton;
+	SkillButton secondButton;
 
 	@Override
 	public void initGui() {
@@ -30,8 +30,8 @@ public class SkillScreen extends GuiScreen {
 		Skill childSkill = rootSkill.getChildSkills().get(0);
 		Skill grandChildSkill = childSkill.getChildSkills().get(0);
 
-		buttonList.add(firstButton = new SimpleFirstButton(1, (width / 2) - 10, (height / 2) - 10, childSkill));
-		buttonList.add(secondButton = new SimpleFirstButton(1, (width / 2) - 67, (height / 2) - 57, grandChildSkill));
+		buttonList.add(firstButton = new SkillButton(1, (width / 2) - 10, (height / 2) - 10, childSkill));
+		buttonList.add(secondButton = new SkillButton(1, (width / 2) - 67, (height / 2) - 57, grandChildSkill));
 
 		buttonList.add(CloseButton = new GuiButton(0, (width / 2) + 28, height/2 + 128, 100, 20, "Close"));
 
@@ -75,6 +75,11 @@ public class SkillScreen extends GuiScreen {
 
 		//центральная кнопка
 		//найти альтернативу отображения потому что так не хочет работать ибо координаты не воспринимает от центра
+
+		//TODO Проходишься по списку кнопок, для каждой проверяешь isMouseOnButton(mouseX, mouseY)
+		//Если находится на кнопке
+			//TODO drawHoveringText(твоя кнопка.getTextStrings(), mouseX, mouseY);
+
 		if (mouseX >= centerX && mouseX <= centerX + 20 && mouseY >= centerY && mouseY <= centerY + 10) {
 			{
 				List<String> text = new ArrayList<String>();
