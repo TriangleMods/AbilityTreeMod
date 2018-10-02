@@ -16,6 +16,12 @@ public class SkillTree implements ISkillTree
 	}
 
 
+	@Override
+	public ArrayList<Skill> getAllSkills()
+	{
+		return root.getAllChildSkills();
+	}
+
 	public String getDataAsString()
 	{
 		StringBuilder builder = new StringBuilder("");

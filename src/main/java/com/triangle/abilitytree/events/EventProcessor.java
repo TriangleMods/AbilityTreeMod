@@ -5,6 +5,7 @@ import com.triangle.abilitytree.proxy.CommonProxy;
 import com.triangle.abilitytree.capabilities.CapabilityExtractor;
 import com.triangle.abilitytree.capabilities.ISkillTree;
 import com.triangle.abilitytree.capabilities.SkillTreeProvider;
+import com.triangle.abilitytree.tree.Skill;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -22,6 +23,8 @@ public class EventProcessor
 
 		TreeDataMessageToClient msg = new TreeDataMessageToClient(skillTree);
 		CommonProxy.simpleNetworkWrapper.sendTo(msg, (EntityPlayerMP)event.player);
+
+
 	}
 
 

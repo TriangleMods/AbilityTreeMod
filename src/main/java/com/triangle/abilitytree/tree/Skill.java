@@ -136,6 +136,23 @@ public abstract class Skill
 		return childSkills;
 	}
 
+	public ArrayList<Skill> getAllChildSkills()
+	{
+		if(childSkills != null)
+		{
+			ArrayList<Skill> result = new ArrayList<>();
+			result.addAll(childSkills);
+			for (Skill childSkill : childSkills)
+			{
+				ArrayList<Skill> tmp = childSkill.getAllChildSkills();
+				if(tmp != null)
+					result.addAll(tmp);
+			}
+			return result;
+		}
+		return null;
+	}
+
 	protected void setName(String name)
 	{
 		this.name = name;

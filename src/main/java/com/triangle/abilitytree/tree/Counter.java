@@ -1,10 +1,9 @@
 package com.triangle.abilitytree.tree;
 
 import com.triangle.abilitytree.events.UpdateDebugger;
-import com.triangle.abilitytree.interfaces.ICounter;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
-public class Counter implements ICounter
+public class Counter
 {
 	private int value;
 	private int maxValue;
@@ -56,24 +55,20 @@ public class Counter implements ICounter
 		UpdateDebugger.sendString(this.toString());
 	}
 
-	@Override
 	public int getValue()
 	{
 		return value;
 	}
 
-	@Override
 	public int getMaxValue()
 	{
 		return maxValue;
 	}
 
-	@Override
 	public String getDescription() {
 		return description;
 	}
 
-	@Override
 	public boolean isComplited()
 	{
 		return isComplited;
