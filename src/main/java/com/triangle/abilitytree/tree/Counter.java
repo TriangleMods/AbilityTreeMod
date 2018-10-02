@@ -1,4 +1,4 @@
-package com.triangle.abilitytree.tree.logic.skilltree;
+package com.triangle.abilitytree.tree;
 
 import com.triangle.abilitytree.events.UpdateDebugger;
 import com.triangle.abilitytree.interfaces.ICounter;
@@ -28,7 +28,6 @@ public class Counter implements ICounter
 
 	public void handleEvent(Event e)
 	{
-
 		if(eventType.isInstance(e))
 			add(1);
 	}
@@ -48,6 +47,7 @@ public class Counter implements ICounter
 	{
 		if(isComplited)
 			return;
+
 		value = i;
 
 		if(value >= maxValue)

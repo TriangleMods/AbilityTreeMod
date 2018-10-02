@@ -1,10 +1,9 @@
-package com.triangle.abilitytree.tree.logic.skilltree.tree.skills.allskills;
+package com.triangle.abilitytree.tree.allskills;
 
-import com.triangle.abilitytree.tree.logic.skilltree.Counter;
-import com.triangle.abilitytree.tree.logic.skilltree.tree.skills.Skill;
+import com.triangle.abilitytree.tree.Counter;
+import com.triangle.abilitytree.tree.Skill;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 import net.minecraftforge.event.entity.player.FillBucketEvent;
-import net.minecraftforge.fml.common.eventhandler.Event;
 
 public class HarvestSkill2 extends Skill
 {
@@ -18,5 +17,4 @@ public class HarvestSkill2 extends Skill
 		addCounter(bucketCounter);
 		setCoord(100,100);
 	}
-
 }

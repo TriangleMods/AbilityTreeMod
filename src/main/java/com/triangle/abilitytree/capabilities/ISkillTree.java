@@ -1,6 +1,6 @@
-package com.triangle.abilitytree.tree.capabilities;
+package com.triangle.abilitytree.capabilities;
 
-import com.triangle.abilitytree.tree.logic.skilltree.tree.skills.Skill;
+import com.triangle.abilitytree.tree.Skill;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
 public interface ISkillTree

@@ -1,6 +1,6 @@
 package com.triangle.abilitytree.messaging;
 
-import com.triangle.abilitytree.tree.capabilities.ISkillTree;
+import com.triangle.abilitytree.capabilities.ISkillTree;
 import io.netty.buffer.ByteBuf;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 

@@ -1,8 +1,6 @@
-package com.triangle.abilitytree.tree.logic.skilltree.tree.skills;
+package com.triangle.abilitytree.tree;
 
 
-import com.triangle.abilitytree.tree.logic.skilltree.Counter;
-import com.triangle.abilitytree.tree.logic.skilltree.tree.skills.Util;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
 import java.awt.*;
@@ -15,8 +13,7 @@ public abstract class Skill
 	private boolean hasChildren = false;
 
 	private ArrayList<Counter> counters;
-
-	private ArrayList<String> rewards;
+	private ArrayList<Reward> rewards;
 
 	private String name;
 	private Point coord;
@@ -36,7 +33,6 @@ public abstract class Skill
 
 	public void init(ArrayList<String> countersData)
 	{
-		//TODO проверить, насколько оптимально проверять инициализацию здесь, и нет ли резона вылетать
 		//=====[  skill init tests   ]=====
 		if(!this.initData.isInitializedProperly())
 			System.err.println("### ERROR: Skill isn't initialized properly: \n name: "+this.name+"\n coord: "+this.coord);
@@ -78,12 +74,21 @@ public abstract class Skill
 
 		if(this.isComplited())
 		{
+			influenceOnEvent(e);
+
 			if(childSkills != null)
 			for (Skill childSkill : childSkills)
 				childSkill.passEvent(e);
 		}
 		else
 			this.handleEvent(e);
+	}
+
+	protected void influenceOnEvent(Event e)
+	{
+		for (Reward reward : rewards) {
+			reward.tryInfluenceOnEvent(e);
+		}
 	}
 
 	protected void handleEvent(Event e)
@@ -105,18 +110,15 @@ public abstract class Skill
 		return true;
 	}
 
-	protected Skill addCounter(Counter counter)
+	protected void addCounter(Counter counter)
 	{
 		this.counters.add(counter);
-		return this;
 	}
 
-	protected Skill setCoord(int x, int y)
+	protected void setCoord(int x, int y)
 	{
 		coord = new Point(x, y);
 		initData.setCoord();
-
-		return this;
 	}
 
 	public ArrayList<Counter> getCounters(){
@@ -134,12 +136,10 @@ public abstract class Skill
 		return childSkills;
 	}
 
-	protected Skill setName(String name)
+	protected void setName(String name)
 	{
 		this.name = name;
 		initData.setName();
-
-		return this;
 	}
 
 	public String getName()
@@ -147,7 +147,7 @@ public abstract class Skill
 		return name;
 	}
 
-	public Skill addChild(Skill child)
+	public void addChild(Skill child)
 	{
 		if(!hasChildren)
 		{
@@ -155,16 +155,14 @@ public abstract class Skill
 			childSkills = new ArrayList<>();
 		}
 		childSkills.add(child);
-		return this;
 	}
 
-	public ArrayList<String> getRewards() {
+	public ArrayList<Reward> getRewards() {
 		return rewards;
 	}
 
-	protected Skill addReward(String reward)
+	protected void addReward(Reward reward)
 	{
 		rewards.add(reward);
-		return this;
 	}
 }

@@ -1,4 +1,4 @@
-package com.triangle.abilitytree.tree.capabilities;
+package com.triangle.abilitytree.capabilities;
 
 import com.triangle.abilitytree.AbilityTreeMod;
 import net.minecraft.entity.Entity;
@@ -14,8 +14,8 @@ public class CapabilityHandler
 	@SubscribeEvent
 	public void attachCapability(AttachCapabilitiesEvent<Entity> event)
 	{
-
 		if (!(event.getObject() instanceof EntityPlayer)) return;
 		event.addCapability(SKILL_TREE_CAPABILITY, new SkillTreeProvider());
+		System.out.println("Capa attached");
 	}
 }

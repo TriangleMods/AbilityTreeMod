@@ -2,9 +2,9 @@ package com.triangle.abilitytree.events;
 
 import com.triangle.abilitytree.messaging.TreeDataMessageToClient;
 import com.triangle.abilitytree.proxy.CommonProxy;
-import com.triangle.abilitytree.tree.capabilities.CapabilityExtractor;
-import com.triangle.abilitytree.tree.capabilities.ISkillTree;
-import com.triangle.abilitytree.tree.capabilities.SkillTreeProvider;
+import com.triangle.abilitytree.capabilities.CapabilityExtractor;
+import com.triangle.abilitytree.capabilities.ISkillTree;
+import com.triangle.abilitytree.capabilities.SkillTreeProvider;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -16,15 +16,31 @@ import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 
 public class EventProcessor
 {
-    //TODO удалить комметны
-	@SubscribeEvent
-	public void onPlayerLogsIn(PlayerEvent.PlayerLoggedInEvent event)
+	public void sendSyncMessageWithTreeDataToClient(PlayerEvent event)
 	{
 		ISkillTree skillTree = CapabilityExtractor.getSkillTree(event.player);
 
 		TreeDataMessageToClient msg = new TreeDataMessageToClient(skillTree);
 		CommonProxy.simpleNetworkWrapper.sendTo(msg, (EntityPlayerMP)event.player);
+	}
 
+
+	@SubscribeEvent
+	public void onPlayerLogsIn(PlayerEvent.PlayerLoggedInEvent event)
+	{
+		sendSyncMessageWithTreeDataToClient(event);
+	}
+
+	@SubscribeEvent
+	public void onPlayerChangesDimension(PlayerEvent.PlayerChangedDimensionEvent event)
+	{
+		sendSyncMessageWithTreeDataToClient(event);
+	}
+
+	@SubscribeEvent
+	public void onPlayerRespawns(PlayerEvent.PlayerRespawnEvent event)
+	{
+		sendSyncMessageWithTreeDataToClient(event);
 	}
 
 	@SubscribeEvent
@@ -32,9 +48,12 @@ public class EventProcessor
 	{
 		ISkillTree skillTree = CapabilityExtractor.getSkillTree(event.getEntityPlayer());
 		ISkillTree oldSkillTree = event.getOriginal().getCapability(SkillTreeProvider.SKILL_TREE_CAPABILITY, null);
-
 		skillTree.setDataFromString(oldSkillTree.getDataAsString());
+
 	}
+
+
+
 
 	@SubscribeEvent
 	public void onBonemealEvent(BonemealEvent event)

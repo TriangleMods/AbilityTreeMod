@@ -1,10 +1,7 @@
-package com.triangle.abilitytree.tree.logic.skilltree.tree;
+package com.triangle.abilitytree.tree;
 
-import com.triangle.abilitytree.tree.capabilities.ISkillTree;
-import com.triangle.abilitytree.tree.logic.skilltree.Counter;
-import com.triangle.abilitytree.tree.logic.skilltree.tree.skills.Skill;
-import com.triangle.abilitytree.tree.logic.skilltree.tree.skills.Util;
-import com.triangle.abilitytree.tree.logic.skilltree.tree.skills.allskills.RootSkill;
+import com.triangle.abilitytree.capabilities.ISkillTree;
+import com.triangle.abilitytree.tree.allskills.RootSkill;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.triangle.abilitytree.tree.capabilities;
+package com.triangle.abilitytree.capabilities;
 
 import net.minecraft.entity.player.EntityPlayer;
 

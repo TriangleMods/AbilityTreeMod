@@ -1,8 +1,8 @@
 package com.triangle.abilitytree.guiskillscreen.skillguiscreens;
 
 import com.triangle.abilitytree.guiskillscreen.skillbuttons.SkillButton;
-import com.triangle.abilitytree.tree.capabilities.CapabilityExtractor;
-import com.triangle.abilitytree.tree.logic.skilltree.tree.skills.Skill;
+import com.triangle.abilitytree.capabilities.CapabilityExtractor;
+import com.triangle.abilitytree.tree.Skill;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;

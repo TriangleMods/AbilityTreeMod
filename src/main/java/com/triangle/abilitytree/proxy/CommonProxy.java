@@ -1,10 +1,10 @@
 package com.triangle.abilitytree.proxy;
 
 import com.triangle.abilitytree.events.EventProcessor;
-import com.triangle.abilitytree.tree.capabilities.CapabilityHandler;
-import com.triangle.abilitytree.tree.capabilities.ISkillTree;
-import com.triangle.abilitytree.tree.capabilities.SkillTreeStorage;
-import com.triangle.abilitytree.tree.logic.skilltree.tree.SkillTree;
+import com.triangle.abilitytree.capabilities.CapabilityHandler;
+import com.triangle.abilitytree.capabilities.ISkillTree;
+import com.triangle.abilitytree.capabilities.SkillTreeStorage;
+import com.triangle.abilitytree.tree.SkillTree;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.network.NetworkRegistry;

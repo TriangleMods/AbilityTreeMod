@@ -1,4 +1,4 @@
-package com.triangle.abilitytree.tree.logic.skilltree.tree.skills;
+package com.triangle.abilitytree.tree;
 
 
 import java.util.ArrayList;

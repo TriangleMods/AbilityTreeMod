@@ -1,6 +1,6 @@
 package com.triangle.abilitytree.guiskillscreen.skillbuttons;
 
-import com.triangle.abilitytree.tree.logic.skilltree.tree.skills.Skill;
+import com.triangle.abilitytree.tree.Skill;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.util.ResourceLocation;
