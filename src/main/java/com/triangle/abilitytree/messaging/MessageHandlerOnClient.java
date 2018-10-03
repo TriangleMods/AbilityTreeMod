@@ -1,9 +1,7 @@
 package com.triangle.abilitytree.messaging;
 
-import com.triangle.abilitytree.events.UpdateDebugger;
-import com.triangle.abilitytree.capabilities.CapabilityExtractor;
+import com.triangle.abilitytree.capabilities.SkillTreeExtractor;
 import com.triangle.abilitytree.capabilities.ISkillTree;
-import com.triangle.abilitytree.tree.Skill;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.entity.player.EntityPlayer;
@@ -38,7 +36,7 @@ public class MessageHandlerOnClient implements IMessageHandler<TreeDataMessageTo
 	void processMessage(TreeDataMessageToClient message)
 	{
 		EntityPlayer player = Minecraft.getMinecraft().player;
-		ISkillTree skillTree = CapabilityExtractor.getSkillTree(player);
+		ISkillTree skillTree = SkillTreeExtractor.getSkillTree(player);
 		skillTree.setDataFromString(message.getData());
 	}
 }

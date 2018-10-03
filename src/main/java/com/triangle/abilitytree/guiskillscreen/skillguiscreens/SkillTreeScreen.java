@@ -1,7 +1,7 @@
 package com.triangle.abilitytree.guiskillscreen.skillguiscreens;
 
 import com.triangle.abilitytree.guiskillscreen.skillbuttons.SkillButton;
-import com.triangle.abilitytree.capabilities.CapabilityExtractor;
+import com.triangle.abilitytree.capabilities.SkillTreeExtractor;
 import com.triangle.abilitytree.tree.Skill;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -26,7 +26,7 @@ public class SkillTreeScreen extends GuiScreen {
 		buttonList.clear();
 
 		//TODO Скиллы нужно не хардкодить, а считывать алгоритмом
-		Skill rootSkill = CapabilityExtractor.getSkillTree(Minecraft.getMinecraft().player).getRootSkill();
+		Skill rootSkill = SkillTreeExtractor.getSkillTree(Minecraft.getMinecraft().player).getRootSkill();
 		Skill childSkill = rootSkill.getChildSkills().get(0);
 		Skill grandChildSkill = childSkill.getChildSkills().get(0);
 

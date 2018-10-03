@@ -49,7 +49,7 @@ public abstract class Skill
 			String delete = null;
 			for (String s : mySkillCounterData)
 			{
-				if(s.indexOf(counter.getDescription()+":")==0)
+				if(s.indexOf(counter.getName()+":")==0)
 				{
 					counter.setValue(Integer.parseInt(s.split(":")[1]));
 					delete = s;

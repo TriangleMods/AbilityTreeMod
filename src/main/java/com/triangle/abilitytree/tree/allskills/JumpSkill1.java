@@ -10,8 +10,8 @@ public class JumpSkill1 extends Skill
 {
 	public JumpSkill1()
 	{
-		addCounter(new Counter("jump", 5, LivingEvent.LivingJumpEvent.class));
-		addChild(new HarvestSkill2());
+		addCounter(new Counter("jump", 5, LivingEvent.LivingJumpEvent.class, "Нужно много прыгать"));
+		addChild(new ElfSkill());
 		setName("Jumper");
 		setCoord(50,50);
 
@@ -22,7 +22,7 @@ public class JumpSkill1 extends Skill
 	{
 		public HighJumpReward()
 		{
-			setDescription("Увеличивает высоту прыжка двух блоков");
+			setDescription("Увеличивает высоту прыжка до двух блоков");
 			setEventType(LivingEvent.LivingJumpEvent.class);
 		}
 

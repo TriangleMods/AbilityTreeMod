@@ -52,7 +52,7 @@ public class SkillTree implements ISkillTree
 	{
 		for (Counter counter : skill.getCounters())
 		{
-			builder.append(this.getName() +'.'+ skill.getName() +'.'+ counter.getDescription() +':'+counter.getValue() +';');
+			builder.append(this.getName() +'.'+ skill.getName() +'.'+ counter.getName() +':'+counter.getValue() +';');
 		}
 
 
