@@ -1,7 +1,7 @@
 package com.triangle.abilitytree.messaging;
 
-import com.triangle.abilitytree.capabilities.SkillTreeExtractor;
 import com.triangle.abilitytree.capabilities.ISkillTree;
+import com.triangle.abilitytree.capabilities.SkillTreeExtractor;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.entity.player.EntityPlayer;
@@ -10,6 +10,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 
+//DOC_ME
 public class MessageHandlerOnClient implements IMessageHandler<TreeDataMessageToClient, IMessage>
 {
 	@Override

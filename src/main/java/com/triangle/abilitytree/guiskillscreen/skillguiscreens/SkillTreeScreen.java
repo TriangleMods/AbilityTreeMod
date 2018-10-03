@@ -1,7 +1,7 @@
 package com.triangle.abilitytree.guiskillscreen.skillguiscreens;
 
-import com.triangle.abilitytree.guiskillscreen.skillbuttons.SkillButton;
 import com.triangle.abilitytree.capabilities.SkillTreeExtractor;
+import com.triangle.abilitytree.guiskillscreen.skillbuttons.SkillButton;
 import com.triangle.abilitytree.tree.Skill;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+//DOC_ME
 public class SkillTreeScreen extends GuiScreen {
 
 	final ResourceLocation texture = new ResourceLocation("guiexperimetal:textures/gui/background_gui_skill_1.png");

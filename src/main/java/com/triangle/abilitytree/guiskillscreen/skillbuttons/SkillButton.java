@@ -5,6 +5,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.util.ResourceLocation;
 
+//DOC_ME
 public class SkillButton extends GuiButton
 {
 	int u = 0;

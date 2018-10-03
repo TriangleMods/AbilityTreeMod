@@ -1,12 +1,11 @@
 package com.triangle.abilitytree.capabilities;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.fml.common.eventhandler.Event;
 
+//DOC_ME
 public class SkillTreeExtractor
 {
     public static ISkillTree getSkillTree(EntityPlayer player)

@@ -1,5 +1,6 @@
 package com.triangle.abilitytree.proxy;
 
+//DOC_ME
 public class ServerProxy extends CommonProxy
 {
 

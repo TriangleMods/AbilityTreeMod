@@ -6,7 +6,7 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 import java.awt.*;
 import java.util.ArrayList;
 
-
+//DOC_ME
 public abstract class Skill
 {
 	private ArrayList<Skill> childSkills = null;

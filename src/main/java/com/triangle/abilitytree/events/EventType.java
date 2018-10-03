@@ -4,6 +4,7 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
+//DOC_ME
 public enum EventType
 {
 	LivingJump(LivingEvent.LivingJumpEvent.class),

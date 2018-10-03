@@ -1,5 +1,6 @@
 package com.triangle.abilitytree.tree;
 
+//DOC_ME
 public class SkillInitChecker
 {
 	private Boolean name = false;

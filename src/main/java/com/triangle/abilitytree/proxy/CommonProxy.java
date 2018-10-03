@@ -1,15 +1,16 @@
 package com.triangle.abilitytree.proxy;
 
-import com.triangle.abilitytree.events.EventProcessor;
 import com.triangle.abilitytree.capabilities.CapabilityHandler;
 import com.triangle.abilitytree.capabilities.ISkillTree;
 import com.triangle.abilitytree.capabilities.SkillTreeStorage;
+import com.triangle.abilitytree.events.EventProcessor;
 import com.triangle.abilitytree.tree.SkillTree;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 
+//DOC_ME
 public abstract class CommonProxy
 {
 

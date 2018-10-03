@@ -6,6 +6,7 @@ import com.triangle.abilitytree.tree.Skill;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
+//DOC_ME
 public class JumpSkill1 extends Skill
 {
 	public JumpSkill1()

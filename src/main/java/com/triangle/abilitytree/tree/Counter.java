@@ -3,6 +3,7 @@ package com.triangle.abilitytree.tree;
 import com.triangle.abilitytree.events.UpdateDebugger;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
+//DOC_ME
 public class Counter
 {
 	private int value;

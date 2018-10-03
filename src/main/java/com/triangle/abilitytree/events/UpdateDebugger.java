@@ -5,6 +5,7 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
 
+//DOC_ME
 public class UpdateDebugger
 {
 
