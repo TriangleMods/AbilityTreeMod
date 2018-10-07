@@ -1,16 +1,14 @@
 package com.triangle.abilitytree.capabilities;
 
-import com.triangle.abilitytree.tree.Skill;
+import com.triangle.abilitytree.tree.SkillTree;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
 import java.util.ArrayList;
 
-//DOC_ME
-public interface ISkillTree
+public interface ISkillTreeList
 {
 	String getDataAsString();
 	void setDataFromString(String data);
 	void passEvent(Event e);
-	Skill getRootSkill();
-	ArrayList<Skill> getAllSkills();
+	ArrayList<SkillTree> getSkillTrees();
 }

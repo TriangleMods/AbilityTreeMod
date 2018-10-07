@@ -17,6 +17,7 @@ public abstract class Skill
 
 	private String name;
 	private Point coord;
+	private Point textureCoord;
 
 	SkillInitChecker initData = new SkillInitChecker();
 
@@ -119,6 +120,21 @@ public abstract class Skill
 	{
 		coord = new Point(x, y);
 		initData.setCoord();
+	}
+
+	public Point getCoord()
+	{
+		return coord;
+	}
+
+	protected void setTextureCoord(int x, int y)
+	{
+		textureCoord = new Point(x, y);
+	}
+
+	public Point getTextureCoord()
+	{
+		return textureCoord;
 	}
 
 	public ArrayList<Counter> getCounters(){

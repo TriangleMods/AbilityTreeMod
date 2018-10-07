@@ -44,4 +44,7 @@ public abstract class Reward
 
 	protected abstract void influenceOnEvent(Event e);
 
+	public String getDescription() {
+		return description;
+	}
 }

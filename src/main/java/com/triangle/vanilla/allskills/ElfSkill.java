@@ -1,4 +1,4 @@
-package com.triangle.abilitytree.tree.allskills;
+package com.triangle.vanilla.allskills;
 
 import com.triangle.abilitytree.tree.Counter;
 import com.triangle.abilitytree.tree.Reward;
@@ -6,7 +6,6 @@ import com.triangle.abilitytree.tree.Skill;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
-//DOC_ME
 public class ElfSkill extends Skill
 {
 
@@ -15,7 +14,8 @@ public class ElfSkill extends Skill
 		setName("Elf80");
 		addCounter(new ElfCounter(20));
 		addReward(new ElfReward());
-		setCoord(100,100);
+		setCoord(81,101);
+		setTextureCoord(0,0);
 	}
 
 	class ElfReward extends Reward

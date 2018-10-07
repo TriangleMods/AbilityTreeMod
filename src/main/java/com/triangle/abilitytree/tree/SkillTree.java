@@ -1,15 +1,21 @@
 package com.triangle.abilitytree.tree;
 
-import com.triangle.abilitytree.capabilities.ISkillTree;
-import com.triangle.abilitytree.tree.allskills.RootSkill;
+
 import net.minecraftforge.fml.common.eventhandler.Event;
 
 import java.util.ArrayList;
 
-//DOC_ME
-public class SkillTree implements ISkillTree
+//TODO проверка инициализации
+public class SkillTree
 {
-	private RootSkill root = new RootSkill();
+	private String name;
+
+	private Skill root;
+
+	protected void setRootSkill(Skill root)
+	{
+		this.root = root;
+	}
 
 	public Skill getRootSkill()
 	{
@@ -17,10 +23,15 @@ public class SkillTree implements ISkillTree
 	}
 
 
-	@Override
 	public ArrayList<Skill> getAllSkills()
 	{
 		return root.getAllChildSkills();
+	}
+
+	public String serializeData()
+	{
+		StringBuilder builder = new StringBuilder("");
+		return builder.toString();
 	}
 
 	public String getDataAsString()
@@ -38,10 +49,14 @@ public class SkillTree implements ISkillTree
 		root.init(modCounters);
 	}
 
-	//TODO make abstract
+	protected void setName(String name)
+	{
+		this.name = name;
+	}
+
 	public String getName()
 	{
-		return "sample";
+		return this.name;
 	}
 
 	public void passEvent(Event e)

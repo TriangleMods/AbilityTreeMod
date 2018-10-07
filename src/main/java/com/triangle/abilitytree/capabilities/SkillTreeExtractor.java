@@ -8,20 +8,20 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 //DOC_ME
 public class SkillTreeExtractor
 {
-    public static ISkillTree getSkillTree(EntityPlayer player)
+    public static ISkillTreeList getAllSkillTrees(EntityPlayer player)
     {
-        return player.getCapability(SkillTreeProvider.SKILL_TREE_CAPABILITY, null);
+        return player.getCapability(SkillTreeListProvider.SKILL_TREE_CAPABILITY, null);
     }
 
     public static void passEvent(PlayerEvent e)
     {
-    	getSkillTree(e.getEntityPlayer()).passEvent(e);
+    	getAllSkillTrees(e.getEntityPlayer()).passEvent(e);
     }
 
 	public static void passEvent(LivingEvent e)
 	{
 		Entity entity = e.getEntity();
 		if(entity instanceof EntityPlayer)
-			getSkillTree((EntityPlayer)entity).passEvent(e);
+			getAllSkillTrees((EntityPlayer)entity).passEvent(e);
 	}
 }

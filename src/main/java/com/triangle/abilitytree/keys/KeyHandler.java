@@ -1,6 +1,6 @@
 package com.triangle.abilitytree.keys;
 
-import com.triangle.abilitytree.guiskillscreen.skillguiscreens.SkillTreeScreen;
+import com.triangle.abilitytree.gui.SkillTreeScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;

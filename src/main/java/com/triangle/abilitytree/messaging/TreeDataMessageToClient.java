@@ -1,6 +1,6 @@
 package com.triangle.abilitytree.messaging;
 
-import com.triangle.abilitytree.capabilities.ISkillTree;
+import com.triangle.abilitytree.capabilities.ISkillTreeList;
 import io.netty.buffer.ByteBuf;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 
@@ -18,7 +18,7 @@ public class TreeDataMessageToClient implements IMessage
 		return dataString;
 	}
 
-	public TreeDataMessageToClient(ISkillTree tree) {
+	public TreeDataMessageToClient(ISkillTreeList tree) {
 		this.dataString = tree.getDataAsString();
 	}
 

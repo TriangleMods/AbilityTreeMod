@@ -1,8 +1,7 @@
-package com.triangle.abilitytree.tree.allskills;
+package com.triangle.vanilla.allskills;
 
 import com.triangle.abilitytree.tree.Skill;
 
-//DOC_ME
 public class RootSkill extends Skill
 {
 	public RootSkill()

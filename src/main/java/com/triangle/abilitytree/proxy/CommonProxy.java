@@ -1,16 +1,17 @@
 package com.triangle.abilitytree.proxy;
 
-import com.triangle.abilitytree.capabilities.CapabilityHandler;
-import com.triangle.abilitytree.capabilities.ISkillTree;
-import com.triangle.abilitytree.capabilities.SkillTreeStorage;
+import com.triangle.abilitytree.capabilities.SkillTreeListStorage;
+import com.triangle.abilitytree.capabilities.ISkillTreeList;
 import com.triangle.abilitytree.events.EventProcessor;
-import com.triangle.abilitytree.tree.SkillTree;
+import com.triangle.abilitytree.capabilities.CapabilityHandler;
+import com.triangle.abilitytree.tree.SkillTreeList;
+import com.triangle.abilitytree.tree.SkillTreeRegistry;
+import com.triangle.vanilla.VanillaSkillTree;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 
-//DOC_ME
 public abstract class CommonProxy
 {
 
@@ -19,13 +20,16 @@ public abstract class CommonProxy
 
 	public void preInit()
 	{
+		System.out.println("### PREINIT");
+		SkillTreeRegistry.add(VanillaSkillTree.class);
 		simpleNetworkWrapper = NetworkRegistry.INSTANCE.newSimpleChannel("abilityTreeChannel");
 	}
 
 
 	public void init()
 	{
-		CapabilityManager.INSTANCE.register(ISkillTree.class, new SkillTreeStorage(), SkillTree.class);
+		System.out.println("### INIT");
+		CapabilityManager.INSTANCE.register(ISkillTreeList.class, new SkillTreeListStorage(), SkillTreeList.class);
 		MinecraftForge.EVENT_BUS.register(new EventProcessor());
 		MinecraftForge.EVENT_BUS.register(new CapabilityHandler());
 	}
@@ -33,6 +37,6 @@ public abstract class CommonProxy
 
 	public void postInit()
 	{
-
+		System.out.println("### POSTINIT");
 	}
 }

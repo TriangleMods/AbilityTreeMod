@@ -6,15 +6,14 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 
-//DOC_ME
-public class SkillTreeProvider implements ICapabilitySerializable<NBTBase>
+public class SkillTreeListProvider implements ICapabilitySerializable<NBTBase>
 {
-	@CapabilityInject(ISkillTree.class)
-	public static final Capability<ISkillTree> SKILL_TREE_CAPABILITY = null;
+	@CapabilityInject(ISkillTreeList.class)
+	public static final Capability<ISkillTreeList> SKILL_TREE_CAPABILITY = null;
 
-	private ISkillTree instance = SKILL_TREE_CAPABILITY.getDefaultInstance();
+	private ISkillTreeList instance = SKILL_TREE_CAPABILITY.getDefaultInstance();
 
-	public SkillTreeProvider()
+	public SkillTreeListProvider()
 	{
 
 	}

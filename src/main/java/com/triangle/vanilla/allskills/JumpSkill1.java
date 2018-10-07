@@ -1,4 +1,4 @@
-package com.triangle.abilitytree.tree.allskills;
+package com.triangle.vanilla.allskills;
 
 import com.triangle.abilitytree.tree.Counter;
 import com.triangle.abilitytree.tree.Reward;
@@ -6,7 +6,6 @@ import com.triangle.abilitytree.tree.Skill;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
-//DOC_ME
 public class JumpSkill1 extends Skill
 {
 	public JumpSkill1()
@@ -14,8 +13,8 @@ public class JumpSkill1 extends Skill
 		addCounter(new Counter("jump", 5, LivingEvent.LivingJumpEvent.class, "Нужно много прыгать"));
 		addChild(new ElfSkill());
 		setName("Jumper");
-		setCoord(50,50);
-
+		setCoord(157,101);
+		setTextureCoord(1,0);
 		addReward(new HighJumpReward());
 	}
 

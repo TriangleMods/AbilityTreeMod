@@ -16,7 +16,7 @@ public class CapabilityHandler
 	public void attachCapability(AttachCapabilitiesEvent<Entity> event)
 	{
 		if (!(event.getObject() instanceof EntityPlayer)) return;
-		event.addCapability(SKILL_TREE_CAPABILITY, new SkillTreeProvider());
+		event.addCapability(SKILL_TREE_CAPABILITY, new SkillTreeListProvider());
 		System.out.println("Capa attached");
 	}
 }

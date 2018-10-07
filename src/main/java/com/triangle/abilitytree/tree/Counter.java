@@ -13,6 +13,7 @@ public class Counter
 	private boolean isComplited;
 	Class<? extends Event> eventType;
 
+	//TODO no empti names
 	//TODO List of event-listeners, binded to counters
 	public Counter(String name, int maxValue, Class<? extends Event> eventType, String description) throws IndexOutOfBoundsException
 	{
