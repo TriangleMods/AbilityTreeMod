@@ -21,7 +21,6 @@ public abstract class CommonProxy
 	public void preInit()
 	{
 		System.out.println("### PREINIT");
-		SkillTreeRegistry.add(VanillaSkillTree.class);
 		simpleNetworkWrapper = NetworkRegistry.INSTANCE.newSimpleChannel("abilityTreeChannel");
 	}
 
