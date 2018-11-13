@@ -7,7 +7,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 //DOC_ME
-public abstract class Skill
+public abstract class Skill implements ISerializableTreePart
 {
 	private ArrayList<Skill> childSkills = null;
 	private boolean hasChildren = false;
@@ -30,6 +30,44 @@ public abstract class Skill
 		this.counters = new ArrayList<>();
 
 		this.rewards = new ArrayList<>();
+	}
+
+	//TODO этот код может быть чище
+	@Override
+	public String serializeData()
+	{
+		StringBuilder builder = new StringBuilder("");
+
+
+		if(this.isComplited())
+		{
+			builder.append(this.getName()+'<');
+			builder.append(1);
+			ArrayList<String> rewardsData = new ArrayList<>();
+			//TODO не добавлять выключенные награды
+			for (Reward reward : this.getRewards())
+				rewardsData.add(reward.serializeData());
+
+			builder.append(String.join(",",rewardsData));
+		}
+		else
+		{
+
+			ArrayList<String> counterData = new ArrayList<>();
+
+			for (Counter counter : this.getCounters())
+				if(counter.getValue() != 0)
+					counterData.add(counter.serializeData());
+			if(counterData.size()>0)
+			{
+				builder.append(0);
+				builder.append(this.getName()+'<');
+				builder.append(String.join(",",counterData));
+			}
+
+		}
+
+		return builder.toString();
 	}
 
 	public void init(ArrayList<String> countersData)

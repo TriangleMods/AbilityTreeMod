@@ -22,6 +22,7 @@ public class JumpSkill1 extends Skill
 	{
 		public HighJumpReward()
 		{
+			super("highjump");
 			setDescription("Увеличивает высоту прыжка до двух блоков");
 			setEventType(LivingEvent.LivingJumpEvent.class);
 		}

@@ -1,12 +1,13 @@
 package com.triangle.abilitytree.tree;
 
 
+import com.triangle.abilitytree.events.UpdateDebugger;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
 import java.util.ArrayList;
 
 //TODO проверка инициализации
-public class SkillTree
+public class SkillTree implements ISerializableTreePart
 {
 	private String name;
 
@@ -28,16 +29,39 @@ public class SkillTree
 		return root.getAllChildSkills();
 	}
 
+	@Override
 	public String serializeData()
 	{
 		StringBuilder builder = new StringBuilder("");
+		builder.append(this.getName());
+
+		ArrayList<String> skillsData = new ArrayList<>();
+		for (Skill skill : this.getAllSkills())
+		{
+			String tmp = skill.serializeData();
+			if(tmp.length()>0)
+				skillsData.add(tmp);
+		}
+
+		if(skillsData.size()>0)
+		{
+			builder.append(':');
+			builder.append(String.join(";",skillsData));
+		}
+
 		return builder.toString();
 	}
+
+
 
 	public String getDataAsString()
 	{
 		StringBuilder builder = new StringBuilder("");
 		serialize(root, builder);
+		UpdateDebugger.sendString("{");
+		UpdateDebugger.sendString(builder.toString());
+		UpdateDebugger.sendString(serializeData());
+		UpdateDebugger.sendString("}");
 		return builder.toString();
 	}
 

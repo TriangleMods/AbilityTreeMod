@@ -22,6 +22,7 @@ public class ElfSkill extends Skill
 	{
 		public ElfReward()
 		{
+			super("elfrevard");
 			this.setDescription("Есть шанс, что вы не тратите стрелы");
 			this.setEventType(ArrowLooseEvent.class);
 		}
