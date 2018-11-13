@@ -24,7 +24,7 @@ public class VanillaAbilityTreeMod
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
-        SkillTreeRegistry.add(VanillaSkillTree.class);
+        SkillTreeRegistry.add(VanillaSkillTree.class, this.MODID);
     }
 
     @EventHandler

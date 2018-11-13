@@ -37,7 +37,7 @@ public class SkillTreeScreen extends GuiScreen {
 
 		for (Skill skill : displayingSkillTree.getAllSkills())
 		{
-			skillButtonList.add(new SkillButton(ButtonType.SKILL.getValue(), skill, displayingSkillTree.getName()));
+			skillButtonList.add(new SkillButton(ButtonType.SKILL.getValue(), skill, displayingSkillTree.getModid(), displayingSkillTree.getName()));
 		}
 	}
 

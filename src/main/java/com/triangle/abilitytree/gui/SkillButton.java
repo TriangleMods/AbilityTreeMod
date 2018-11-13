@@ -16,16 +16,15 @@ import java.util.List;
 //DOC_ME
 public class SkillButton extends GuiButton
 {
-	//TODO НУЖНАЯ папка под текстуры а то че как лох
 	ResourceLocation texture;
 
 	public final Skill skill;
 
-	public SkillButton(int buttonId, Skill skill, String modName)
+	public SkillButton(int buttonId, Skill skill, String modName, String treeName)
 	{
 		super(buttonId,skill.getCoord().x, skill.getCoord().y,20,20,"");
 		this.skill = skill;
-		texture = new ResourceLocation(modName +":textures/gui/buttons.png");
+		texture = new ResourceLocation(modName +":textures/gui/"+treeName+"/buttons.png");
 	}
 
 

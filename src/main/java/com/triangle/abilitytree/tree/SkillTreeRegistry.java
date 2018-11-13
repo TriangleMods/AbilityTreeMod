@@ -4,24 +4,25 @@ import java.util.ArrayList;
 
 public class SkillTreeRegistry
 {
-	static ArrayList<Class<? extends SkillTree>> skillTreeTypes = new ArrayList<>();
+	static ArrayList<SkillTreeClassWrapper> skillTreeTypes = new ArrayList<>();
 
 	//TODO проверка на однинаковые имена
 	//TODO проверка на специальные символы
-	public static void add(Class<? extends SkillTree> skillTreeType)
+	public static void add(Class<? extends SkillTree> skillTreeType, String modid)
 	{
-		System.out.println("SKILL "+skillTreeType.getName()+" ADDED TO REGISTRY!");
-		skillTreeTypes.add(skillTreeType);
+		skillTreeTypes.add(new SkillTreeClassWrapper(skillTreeType, modid));
 	}
 
 	public static ArrayList<SkillTree> getDefaultSkillTreeInstances()
 	{
 		ArrayList<SkillTree> result = new ArrayList<>();
-		for (Class<? extends SkillTree> skillTreeType : skillTreeTypes)
+		for (SkillTreeClassWrapper skillTreeType : skillTreeTypes)
 		{
 			try
 			{
-				result.add(skillTreeType.newInstance());
+				SkillTree instance = skillTreeType.getSkillTreeClass().newInstance();
+				instance.setModid(skillTreeType.getModid());
+				result.add(instance);
 			}
 			catch (InstantiationException e)
 			{
@@ -34,4 +35,6 @@ public class SkillTreeRegistry
 		}
 		return result;
 	}
+
+
 }

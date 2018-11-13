@@ -7,7 +7,7 @@ public class VanillaSkillTree extends SkillTree
 {
 	public VanillaSkillTree()
 	{
-		this.setName("Vanilla");
+		this.setName("vanilla");
 		this.setRootSkill(new RootSkill());
 	}
 }
