@@ -3,15 +3,17 @@ package com.triangle.vanilla.allskills;
 import com.triangle.abilitytree.tree.Counter;
 import com.triangle.abilitytree.tree.Reward;
 import com.triangle.abilitytree.tree.Skill;
+import com.triangle.abilitytree.tree.SkillTreeData;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
 public class JumpSkill1 extends Skill
 {
-	public JumpSkill1()
+	public JumpSkill1(SkillTreeData skillTreeData)
 	{
+		super(skillTreeData);
 		addCounter(new Counter("jump", 5, LivingEvent.LivingJumpEvent.class, "Нужно много прыгать"));
-		addChild(new ElfSkill());
+		addChild(new ElfSkill(skillTreeData));
 		setName("Jumper");
 		setCoord(157,101);
 		setTextureCoord(1,0);
@@ -22,6 +24,7 @@ public class JumpSkill1 extends Skill
 	{
 		public HighJumpReward()
 		{
+			super("highjump");
 			setDescription("Увеличивает высоту прыжка до двух блоков");
 			setEventType(LivingEvent.LivingJumpEvent.class);
 		}

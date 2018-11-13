@@ -2,52 +2,113 @@ package com.triangle.abilitytree.gui;
 
 import com.triangle.abilitytree.capabilities.SkillTreeExtractor;
 import com.triangle.abilitytree.tree.Skill;
+import com.triangle.abilitytree.tree.SkillTree;
+import javafx.scene.control.ButtonType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentString;
+import scala.xml.Null;
 
 import java.awt.*;
 import java.io.IOException;
+import java.util.ArrayList;
 
 //DOC_ME
 public class SkillTreeScreen extends GuiScreen {
 
-	final ResourceLocation texture = new ResourceLocation("guiexperimetal:textures/gui/background_gui_skill_1.png");
+	ResourceLocation texture = new ResourceLocation("guiexperimetal:textures/gui/background_gui_skill_1.png");
 
 	int guiWidth = 256;
 	int guiHeight = 256;
 
+	int activeTab = 0;
+
+	private ArrayList<GuiButton> allGuiButtons = new ArrayList<>();
+	private ArrayList<TabGuiButton> tabButtonList = new ArrayList<>();
+	private ArrayList<SkillButton> skillButtonList = new ArrayList<>();
+
+	void updateSkillList()
+	{
+		SkillTree displayingSkillTree = SkillTreeExtractor.getAllSkillTrees(Minecraft.getMinecraft().player).getSkillTrees().get(activeTab);
+
+		skillButtonList.clear();
+
+		for (Skill skill : displayingSkillTree.getAllSkills())
+		{
+			skillButtonList.add(new SkillButton(ButtonType.SKILL.getValue(), skill));
+		}
+	}
+
 	@Override
 	public void initGui()
 	{
+		System.out.println("init gui");
+
 		buttonList.clear();
-		//get zero
-		for (Skill skill : SkillTreeExtractor.getAllSkillTrees(Minecraft.getMinecraft().player).getSkillTrees().get(0).getAllSkills())
+		tabButtonList.clear();
+		updateSkillList();
+
+		for (int i = 0; i < SkillTreeExtractor.getAllSkillTrees(Minecraft.getMinecraft().player).getSkillTrees().size(); ++i)
 		{
-			buttonList.add(new SkillButton(1, skill));
+			tabButtonList.add(new TabGuiButton(ButtonType.TAB.getValue(), i, (width - guiWidth )/ 2 - 30,(height - guiHeight) / 2 + i * 45));
 		}
 
-		buttonList.add( new GuiButton(0, (width / 2) + 28, height/2 + 128, 100, 20, "Close"));
+
+		buttonList.add( new GuiButton(ButtonType.GUI.getValue(), (width / 2) + 28, height/2 + 128, 100, 20, "Close"));
 
 		super.initGui();
 
 	}
 
 	@Override
-	protected void actionPerformed(GuiButton button) throws IOException {
-		switch (button.id)
+	protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException
+	{
+		if (mouseButton == 0)
 		{
-			case 0:
+			allGuiButtons.clear();
+			allGuiButtons.addAll(buttonList);
+			allGuiButtons.addAll(tabButtonList);
+			allGuiButtons.addAll(skillButtonList);
+
+			for (int i = 0; i < this.allGuiButtons.size(); ++i)
+			{
+				GuiButton guibutton = this.allGuiButtons.get(i);
+
+				if (guibutton.mousePressed(this.mc, mouseX, mouseY))
+				{
+					net.minecraftforge.client.event.GuiScreenEvent.ActionPerformedEvent.Pre event = new net.minecraftforge.client.event.GuiScreenEvent.ActionPerformedEvent.Pre(this, guibutton, this.buttonList);
+					if (net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(event))
+						break;
+					guibutton = event.getButton();
+					this.selectedButton = guibutton;
+					guibutton.playPressSound(this.mc.getSoundHandler());
+					this.actionPerformed(guibutton);
+					if (this.equals(this.mc.currentScreen))
+						net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new net.minecraftforge.client.event.GuiScreenEvent.ActionPerformedEvent.Post(this, event.getButton(), this.buttonList));
+				}
+			}
+		}
+	}
+
+	@Override
+	protected void actionPerformed(GuiButton button) throws IOException {
+
+		switch (ButtonType.fromInt(button.id))
+		{
+			case GUI:
 				mc.displayGuiScreen(null);
 				break;
-			case 1:
+			case SKILL:
 				Minecraft.getMinecraft().player.sendMessage(new TextComponentString("button is clicked"));
 				break;
+			case TAB:
+				activeTab = ((TabGuiButton)button).skillTreeId;
+				updateSkillList();
+				Minecraft.getMinecraft().player.sendMessage(new TextComponentString(activeTab + ""));
+				break;
 		}
-
-
 	}
 
 	@Override
@@ -58,52 +119,72 @@ public class SkillTreeScreen extends GuiScreen {
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks)
 	{
-
-
 		Point zeroCoord = new Point((width - guiWidth )/ 2, (height - guiHeight) / 2);
-
 
 		Minecraft.getMinecraft().renderEngine.bindTexture(texture);
 
-
-
 		drawTexturedModalRect(zeroCoord.x, zeroCoord.y, 0, 0, guiWidth, guiHeight);
 
-		//================================
-
-		System.out.println("---");
-		System.out.println("Buttons: "+buttonList.size());
-
-		for (GuiButton guiButton : buttonList)
+		for (TabGuiButton button : tabButtonList)
 		{
-			System.out.println("{");
-			if(guiButton instanceof SkillButton)
-			{
-				System.out.println("_");
-				((SkillButton) guiButton).drawButton(mc, mouseX, mouseY, zeroCoord, partialTicks);
-				System.out.println("1");
-			}
-			else
-			{
-				System.out.println("-");
-				guiButton.drawButton(mc, mouseX, mouseY, partialTicks);
-				System.out.println("0");
-			}
-			System.out.println("}");
+			button.drawButton(this.mc, mouseX, mouseY, partialTicks);
 		}
 
-		//================================
-		System.out.println("(3)");
-		for (GuiButton guiButton : buttonList)
+		for (SkillButton button : skillButtonList)
 		{
+			button.drawButton(this.mc, mouseX, mouseY,zeroCoord ,partialTicks);
+		}
 
-				if(guiButton.isMouseOver() && guiButton instanceof SkillButton)
+		for (GuiButton button : buttonList)
+		{
+				button.drawButton(mc, mouseX, mouseY, partialTicks);
+		}
+
+		for (SkillButton guiButton : skillButtonList)
+		{
+				if(guiButton.isMouseOver())
 				{
-					drawHoveringText(((SkillButton)guiButton).getTextStrings(), mouseX, mouseY);
+					drawHoveringText(guiButton.getTextStrings(), mouseX, mouseY);
 				}
-			System.out.println(".");
 		}
 
-		System.out.println("DRAWED SCREEN");
+		for (TabGuiButton tabButton : tabButtonList)
+		{
+			if(tabButton.isMouseOver())
+			{
+				drawHoveringText(SkillTreeExtractor.getAllSkillTrees(Minecraft.getMinecraft().player).getSkillTrees().get(tabButton.skillTreeId).getSkillTreeData().getTreeName(), mouseX, mouseY);
+			}
+		}
+	}
+
+	public enum ButtonType
+	{
+		TAB(0),
+		SKILL(1),
+		GUI(2);
+
+		private final int value;
+
+		public static ButtonType fromInt(int i)
+		{
+			switch (i)
+			{
+				case 0: return TAB;
+				case 1: return SKILL;
+				case 2: return GUI;
+				default: return null;
+			}
+		}
+
+		private ButtonType(int value)
+		{
+			this.value = value;
+		}
+
+		public int getValue()
+		{
+			return value;
+		}
 	}
 }
+

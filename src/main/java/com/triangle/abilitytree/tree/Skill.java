@@ -1,13 +1,15 @@
 package com.triangle.abilitytree.tree;
 
 
+import com.triangle.abilitytree.gui.toasts.ToastManager;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
 import java.awt.*;
 import java.util.ArrayList;
 
 //DOC_ME
-public abstract class Skill
+public abstract class Skill implements ISerializableTreePart
 {
 	private ArrayList<Skill> childSkills = null;
 	private boolean hasChildren = false;
@@ -19,17 +21,64 @@ public abstract class Skill
 	private Point coord;
 	private Point textureCoord;
 
+	private SkillTreeData skillTreeData;
+
 	SkillInitChecker initData = new SkillInitChecker();
 
-	protected Skill()
+	protected Skill(SkillTreeData skillTreeData)
 	{
 		this.hasChildren = false;
 		this.childSkills = null;
+
+		this.skillTreeData = skillTreeData;
 
 		//TODO создавать не всегда
 		this.counters = new ArrayList<>();
 
 		this.rewards = new ArrayList<>();
+	}
+
+	public ResourceLocation getTexture()
+	{
+		return new ResourceLocation(skillTreeData.getModId() +":textures/gui/"+skillTreeData.getTreeName()+"/buttons.png");
+	}
+
+	//TODO этот код может быть чище
+	@Override
+	public String serializeData()
+	{
+		StringBuilder builder = new StringBuilder("");
+
+
+		if(this.isComplited())
+		{
+			builder.append(this.getName()+'<');
+			builder.append(1);
+			ArrayList<String> rewardsData = new ArrayList<>();
+			//TODO не добавлять выключенные награды
+			for (Reward reward : this.getRewards())
+				rewardsData.add(reward.serializeData());
+
+			builder.append(String.join(",",rewardsData));
+		}
+		else
+		{
+
+			ArrayList<String> counterData = new ArrayList<>();
+
+			for (Counter counter : this.getCounters())
+				if(counter.getValue() != 0)
+					counterData.add(counter.serializeData());
+			if(counterData.size()>0)
+			{
+				builder.append(0);
+				builder.append(this.getName()+'<');
+				builder.append(String.join(",",counterData));
+			}
+
+		}
+
+		return builder.toString();
 	}
 
 	public void init(ArrayList<String> countersData)
@@ -97,9 +146,17 @@ public abstract class Skill
 		for (Counter counter : counters)
 		{
 			if(!counter.isComplited())
-				counter.handleEvent(e);
+			{
+				Boolean handled = counter.handleEvent(e);
+				if(handled)
+					ToastManager.showSkillProgressToast(this, counter);
+			}
 		}
 
+		//handleEvent() may encounter only when isComplite() == false
+		//so, if it is true, this mean, that it was completed just now
+		if(this.isComplited())
+			ToastManager.showSkillCompletedToast(this);
 	}
 
 

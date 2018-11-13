@@ -3,14 +3,16 @@ package com.triangle.vanilla.allskills;
 import com.triangle.abilitytree.tree.Counter;
 import com.triangle.abilitytree.tree.Reward;
 import com.triangle.abilitytree.tree.Skill;
+import com.triangle.abilitytree.tree.SkillTreeData;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
 public class ElfSkill extends Skill
 {
 
-	public ElfSkill()
+	public ElfSkill(SkillTreeData skillTreeData)
 	{
+		super(skillTreeData);
 		setName("Elf80");
 		addCounter(new ElfCounter(20));
 		addReward(new ElfReward());
@@ -22,6 +24,7 @@ public class ElfSkill extends Skill
 	{
 		public ElfReward()
 		{
+			super("elfrevard");
 			this.setDescription("Есть шанс, что вы не тратите стрелы");
 			this.setEventType(ArrowLooseEvent.class);
 		}

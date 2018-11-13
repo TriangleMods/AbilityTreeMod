@@ -6,6 +6,8 @@ import java.util.ArrayList;
 //DOC_ME
 public class Util
 {
+	//Повторяющийся код в сериализаторе
+
 
 	//TODO Можно ли это оптимизировать?
 

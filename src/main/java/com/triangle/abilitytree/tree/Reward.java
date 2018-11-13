@@ -2,14 +2,29 @@ package com.triangle.abilitytree.tree;
 
 import net.minecraftforge.fml.common.eventhandler.Event;
 
+import java.util.ArrayList;
+
 //DOC_ME
-public abstract class Reward
+public abstract class Reward implements ISerializableTreePart
 {
 	//TODO Проверка верной инициализации
 	private String description;
+	private String name;
 	Class<? extends Event> eventType;
 	private Boolean isCancellable = true;
 	private Boolean isCancelled = false;
+
+	public Reward(String name)
+	{
+		this.name = name;
+	}
+
+	@Override
+	public String serializeData()
+	{
+		return this.name;
+	}
+
 
 	protected void setDescription(String description)
 	{
@@ -45,6 +60,7 @@ public abstract class Reward
 	protected abstract void influenceOnEvent(Event e);
 
 	public String getDescription() {
-		return description;
+		return this.description;
 	}
+	public String getName(){return this.name;}
 }

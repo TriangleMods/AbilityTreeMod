@@ -5,7 +5,7 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 
 import java.util.ArrayList;
 
-public class SkillTreeList implements ISkillTreeList
+public class SkillTreeList implements ISkillTreeList, ISerializableTreePart
 {
 	final ArrayList<SkillTree> skillTrees;
 
@@ -14,6 +14,21 @@ public class SkillTreeList implements ISkillTreeList
 		System.out.println("ALL SKILLS DEFAULTS LOADED FROM REGISTY!");
 		skillTrees = SkillTreeRegistry.getDefaultSkillTreeInstances();
 	}
+
+	@Override
+	public String serializeData()
+	{
+		StringBuilder builder = new StringBuilder("");
+
+		ArrayList<String> skillTreessData = new ArrayList<>();
+		for (SkillTree skillTree : this.skillTrees)
+			skillTreessData.add(skillTree.serializeData());
+
+		builder.append(String.join("|",skillTreessData));
+
+		return builder.toString();
+	}
+
 
 
 	@Override

@@ -16,8 +16,7 @@ import java.util.List;
 //DOC_ME
 public class SkillButton extends GuiButton
 {
-	//TODO НУЖНАЯ папка под текстуры а то че как лох
-	final ResourceLocation texture = new ResourceLocation("guiexperimetal:textures/gui/buttons.png");
+	ResourceLocation texture;
 
 	public final Skill skill;
 
@@ -25,24 +24,20 @@ public class SkillButton extends GuiButton
 	{
 		super(buttonId,skill.getCoord().x, skill.getCoord().y,20,20,"");
 		this.skill = skill;
+		texture = skill.getTexture();
 	}
 
 
 	public void drawButton(Minecraft mc, int mouseX, int mouseY, Point zeroCoord, float partialTicks)
 	{
-		System.out.println("DrawButton");
 		this.x = zeroCoord.x + skill.getCoord().x;
 		this.y = zeroCoord.y + skill.getCoord().y;
-		System.out.println("Coord");
 
 		this.hovered = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
-		System.out.println("hovered");
 
 		mc.renderEngine.bindTexture(texture);
-		System.out.println("binded");
 
 		drawTexturedModalRect(x, y, skill.getTextureCoord().x*width, skill.getTextureCoord().y*height, width, height);
-		System.out.println("Drowed");
 	}
 
 	public List<String> getTextStrings()

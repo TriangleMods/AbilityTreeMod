@@ -3,8 +3,10 @@ package com.triangle.abilitytree.tree;
 import com.triangle.abilitytree.events.UpdateDebugger;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
+import java.util.ArrayList;
+
 //DOC_ME
-public class Counter
+public class Counter implements ISerializableTreePart
 {
 	private int value;
 	private int maxValue;
@@ -20,7 +22,7 @@ public class Counter
 		if(maxValue <= 0)
 			throw new IndexOutOfBoundsException("maxValue must be greater than 0");
 
-		//TODO list of uniq names
+
 		this.name = name;
 		this.description = description;
 		this.value = 0;
@@ -29,12 +31,22 @@ public class Counter
 		this.eventType = eventType;
 	}
 
-	//TODO протектед-сеттеры для "многстрочной" инициализации
-
-	public void handleEvent(Event e)
+	@Override
+	public String serializeData()
 	{
-		if(eventType.isInstance(e))
+		return this.name+'>'+this.value;
+	}
+
+
+
+	public Boolean handleEvent(Event e)
+	{
+		Boolean neededEvent = eventType.isInstance(e);
+
+		if(neededEvent)
 			handle(e);
+
+		return neededEvent;
 	}
 
 	protected void handle(Event e)
@@ -63,7 +75,6 @@ public class Counter
 		if(value >= maxValue)
 			isComplited = true;
 
-		UpdateDebugger.sendString(this.toString());
 	}
 
 	public int getValue()
