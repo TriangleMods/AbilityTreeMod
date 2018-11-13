@@ -30,19 +30,14 @@ public class SkillButton extends GuiButton
 
 	public void drawButton(Minecraft mc, int mouseX, int mouseY, Point zeroCoord, float partialTicks)
 	{
-		System.out.println("DrawButton");
 		this.x = zeroCoord.x + skill.getCoord().x;
 		this.y = zeroCoord.y + skill.getCoord().y;
-		System.out.println("Coord");
 
 		this.hovered = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
-		System.out.println("hovered");
 
 		mc.renderEngine.bindTexture(texture);
-		System.out.println("binded");
 
 		drawTexturedModalRect(x, y, skill.getTextureCoord().x*width, skill.getTextureCoord().y*height, width, height);
-		System.out.println("Drowed");
 	}
 
 	public List<String> getTextStrings()
