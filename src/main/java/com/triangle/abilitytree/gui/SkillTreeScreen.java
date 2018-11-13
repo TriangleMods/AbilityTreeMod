@@ -18,7 +18,7 @@ import java.util.ArrayList;
 //DOC_ME
 public class SkillTreeScreen extends GuiScreen {
 
-	final ResourceLocation texture = new ResourceLocation("guiexperimetal:textures/gui/background_gui_skill_1.png");
+	ResourceLocation texture = new ResourceLocation("guiexperimetal:textures/gui/background_gui_skill_1.png");
 
 	int guiWidth = 256;
 	int guiHeight = 256;
@@ -31,11 +31,13 @@ public class SkillTreeScreen extends GuiScreen {
 
 	void updateSkillList()
 	{
+		SkillTree displayingSkillTree = SkillTreeExtractor.getAllSkillTrees(Minecraft.getMinecraft().player).getSkillTrees().get(activeTab);
+
 		skillButtonList.clear();
 
-		for (Skill skill : SkillTreeExtractor.getAllSkillTrees(Minecraft.getMinecraft().player).getSkillTrees().get(activeTab).getAllSkills())
+		for (Skill skill : displayingSkillTree.getAllSkills())
 		{
-			skillButtonList.add(new SkillButton(ButtonType.SKILL.getValue(), skill));
+			skillButtonList.add(new SkillButton(ButtonType.SKILL.getValue(), skill, displayingSkillTree.getModid(), displayingSkillTree.getName()));
 		}
 	}
 

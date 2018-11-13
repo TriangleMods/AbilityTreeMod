@@ -1,6 +1,7 @@
 package com.triangle.abilitytree.tree;
 
 //DOC_ME
+//TODO избавиться от этого класса, проверять все одним валидатором
 public class SkillInitChecker
 {
 	private Boolean name = false;

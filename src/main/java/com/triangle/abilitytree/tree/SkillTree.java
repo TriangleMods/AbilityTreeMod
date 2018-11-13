@@ -10,8 +10,19 @@ import java.util.ArrayList;
 public class SkillTree implements ISerializableTreePart
 {
 	private String name;
-
 	private Skill root;
+
+	private String modid;
+
+	protected void setModid(String modid)
+	{
+		this.modid = modid;
+	}
+
+	public String getModid()
+	{
+		return this.modid;
+	}
 
 	protected void setRootSkill(Skill root)
 	{
