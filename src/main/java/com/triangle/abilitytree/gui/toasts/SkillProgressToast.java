@@ -8,6 +8,7 @@ import net.minecraft.client.gui.toasts.GuiToast;
 import net.minecraft.client.gui.toasts.IToast;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -49,6 +50,10 @@ public class SkillProgressToast implements IToast
 		toastGui.getMinecraft().getTextureManager().bindTexture(skill.getTexture());
 		toastGui.drawTexturedModalRect(6, 6, skill.getTextureCoord().x*20, skill.getTextureCoord().y*20, 20, 20);
 		GlStateManager.enableBlend();
+
+		float persentWidth = 154/100F;
+		float persent = (100F/counter.getMaxValue()) * counter.getValue();
+		Gui.drawRect(3, 27, 3 + (int)(persent*persentWidth), 29, -16711936);
 
 		toastGui.getMinecraft().fontRenderer.drawString(this.skill.getName(), 30, 7, -11534256);
 		toastGui.getMinecraft().fontRenderer.drawString(this.counter.toString(), 30, 17, -11534256);
