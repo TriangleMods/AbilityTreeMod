@@ -1,6 +1,8 @@
 package com.triangle.abilitytree.tree;
 
 
+import com.triangle.abilitytree.gui.toasts.ToastManager;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
 import java.awt.*;
@@ -19,17 +21,26 @@ public abstract class Skill implements ISerializableTreePart
 	private Point coord;
 	private Point textureCoord;
 
+	private SkillTreeData skillTreeData;
+
 	SkillInitChecker initData = new SkillInitChecker();
 
-	protected Skill()
+	protected Skill(SkillTreeData skillTreeData)
 	{
 		this.hasChildren = false;
 		this.childSkills = null;
+
+		this.skillTreeData = skillTreeData;
 
 		//TODO создавать не всегда
 		this.counters = new ArrayList<>();
 
 		this.rewards = new ArrayList<>();
+	}
+
+	public ResourceLocation getTexture()
+	{
+		return new ResourceLocation(skillTreeData.getModId() +":textures/gui/"+skillTreeData.getTreeName()+"/buttons.png");
 	}
 
 	//TODO этот код может быть чище
@@ -135,9 +146,17 @@ public abstract class Skill implements ISerializableTreePart
 		for (Counter counter : counters)
 		{
 			if(!counter.isComplited())
-				counter.handleEvent(e);
+			{
+				Boolean handled = counter.handleEvent(e);
+				if(handled)
+					ToastManager.showSkillProgressToast(this, counter);
+			}
 		}
 
+		//handleEvent() may encounter only when isComplite() == false
+		//so, if it is true, this mean, that it was completed just now
+		if(this.isComplited())
+			ToastManager.showSkillCompletedToast(this);
 	}
 
 

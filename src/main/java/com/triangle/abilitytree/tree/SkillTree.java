@@ -9,19 +9,23 @@ import java.util.ArrayList;
 //TODO проверка инициализации
 public class SkillTree implements ISerializableTreePart
 {
-	private String name;
 	private Skill root;
 
-	private String modid;
+	private SkillTreeData skillTreeData;
 
 	protected void setModid(String modid)
 	{
-		this.modid = modid;
+		this.skillTreeData.setModId(modid);
 	}
 
-	public String getModid()
+	protected void setData(String name)
 	{
-		return this.modid;
+		skillTreeData = new SkillTreeData(name);
+	}
+
+	public SkillTreeData getSkillTreeData()
+	{
+		return skillTreeData;
 	}
 
 	protected void setRootSkill(Skill root)
@@ -44,7 +48,7 @@ public class SkillTree implements ISerializableTreePart
 	public String serializeData()
 	{
 		StringBuilder builder = new StringBuilder("");
-		builder.append(this.getName());
+		builder.append(this.skillTreeData.getTreeName());
 
 		ArrayList<String> skillsData = new ArrayList<>();
 		for (Skill skill : this.getAllSkills())
@@ -79,20 +83,11 @@ public class SkillTree implements ISerializableTreePart
 	public void setDataFromString(String serializedData) {
 
 		String[] countersData = serializedData.split(";");
-		ArrayList<String> modCounters = Util.getOnlyStartedWithAndCut(countersData, this.getName()+".");
+		ArrayList<String> modCounters = Util.getOnlyStartedWithAndCut(countersData, this.skillTreeData.getTreeName()+".");
 
 		root.init(modCounters);
 	}
 
-	protected void setName(String name)
-	{
-		this.name = name;
-	}
-
-	public String getName()
-	{
-		return this.name;
-	}
 
 	public void passEvent(Event e)
 	{
@@ -103,7 +98,7 @@ public class SkillTree implements ISerializableTreePart
 	{
 		for (Counter counter : skill.getCounters())
 		{
-			builder.append(this.getName() +'.'+ skill.getName() +'.'+ counter.getName() +':'+counter.getValue() +';');
+			builder.append(this.skillTreeData.getTreeName()+'.'+ skill.getName() +'.'+ counter.getName() +':'+counter.getValue() +';');
 		}
 
 

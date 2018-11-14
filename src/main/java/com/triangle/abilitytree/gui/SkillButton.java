@@ -20,11 +20,11 @@ public class SkillButton extends GuiButton
 
 	public final Skill skill;
 
-	public SkillButton(int buttonId, Skill skill, String modName, String treeName)
+	public SkillButton(int buttonId, Skill skill)
 	{
 		super(buttonId,skill.getCoord().x, skill.getCoord().y,20,20,"");
 		this.skill = skill;
-		texture = new ResourceLocation(modName +":textures/gui/"+treeName+"/buttons.png");
+		texture = skill.getTexture();
 	}
 
 

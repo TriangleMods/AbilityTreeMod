@@ -19,7 +19,7 @@ public class KeyHandler
 
 	static
 	{
-		keyBindings = new KeyBinding[1];
+		keyBindings = new KeyBinding[2];
 		keyBindings[0] = new KeyBinding("key.info.desc",Keyboard.KEY_I,"key.examplemod.category");
 
 		for(KeyBinding keyBinding : keyBindings)
@@ -35,5 +35,6 @@ public class KeyHandler
 		{
 			FMLCommonHandler.instance().showGuiScreen(new SkillTreeScreen());
 		}
+
 	}
 }

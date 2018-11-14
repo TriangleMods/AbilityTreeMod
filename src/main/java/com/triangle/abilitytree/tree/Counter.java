@@ -39,10 +39,14 @@ public class Counter implements ISerializableTreePart
 
 
 
-	public void handleEvent(Event e)
+	public Boolean handleEvent(Event e)
 	{
-		if(eventType.isInstance(e))
+		Boolean neededEvent = eventType.isInstance(e);
+
+		if(neededEvent)
 			handle(e);
+
+		return neededEvent;
 	}
 
 	protected void handle(Event e)
@@ -71,7 +75,6 @@ public class Counter implements ISerializableTreePart
 		if(value >= maxValue)
 			isComplited = true;
 
-		UpdateDebugger.sendString(this.toString());
 	}
 
 	public int getValue()

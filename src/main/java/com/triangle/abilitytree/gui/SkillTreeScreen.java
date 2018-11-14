@@ -37,7 +37,7 @@ public class SkillTreeScreen extends GuiScreen {
 
 		for (Skill skill : displayingSkillTree.getAllSkills())
 		{
-			skillButtonList.add(new SkillButton(ButtonType.SKILL.getValue(), skill, displayingSkillTree.getModid(), displayingSkillTree.getName()));
+			skillButtonList.add(new SkillButton(ButtonType.SKILL.getValue(), skill));
 		}
 	}
 
@@ -152,7 +152,7 @@ public class SkillTreeScreen extends GuiScreen {
 		{
 			if(tabButton.isMouseOver())
 			{
-				drawHoveringText(SkillTreeExtractor.getAllSkillTrees(Minecraft.getMinecraft().player).getSkillTrees().get(tabButton.skillTreeId).getName(), mouseX, mouseY);
+				drawHoveringText(SkillTreeExtractor.getAllSkillTrees(Minecraft.getMinecraft().player).getSkillTrees().get(tabButton.skillTreeId).getSkillTreeData().getTreeName(), mouseX, mouseY);
 			}
 		}
 	}
