@@ -12,7 +12,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
 
-//DOC_ME
+//Default Key binding and event handling
 public class KeyHandler
 {
 	public static KeyBinding[] keyBindings;

@@ -1,5 +1,6 @@
 package com.triangle.abilitytree.tree;
 
+//Text data about SkillTree, kind of DTO
 public class SkillTreeData
 {
 	private String modId;

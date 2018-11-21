@@ -13,6 +13,7 @@ import net.minecraftforge.event.entity.player.FillBucketEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 
+//Routs game Events to Client and, if required, server. Subscribed to EVENT_BUS
 public class EventProcessor
 {
 	public void sendSyncMessageWithTreeDataToClient(PlayerEvent event)
@@ -21,10 +22,7 @@ public class EventProcessor
 
 		TreeDataMessageToClient msg = new TreeDataMessageToClient(skillTree);
 		CommonProxy.simpleNetworkWrapper.sendTo(msg, (EntityPlayerMP)event.player);
-
-
 	}
-
 
 	@SubscribeEvent
 	public void onPlayerLogsIn(PlayerEvent.PlayerLoggedInEvent event)
@@ -50,11 +48,7 @@ public class EventProcessor
 		ISkillTreeList skillTree = SkillTreeExtractor.getAllSkillTrees(event.getEntityPlayer());
 		ISkillTreeList oldSkillTree = event.getOriginal().getCapability(SkillTreeListProvider.SKILL_TREE_CAPABILITY, null);
 		skillTree.setDataFromString(oldSkillTree.getDataAsString());
-
 	}
-
-
-
 
 	@SubscribeEvent
 	public void onBonemealEvent(BonemealEvent event)

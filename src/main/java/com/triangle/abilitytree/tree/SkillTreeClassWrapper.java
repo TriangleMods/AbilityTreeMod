@@ -1,5 +1,6 @@
 package com.triangle.abilitytree.tree;
 
+//Util class, need to union data about tree and mod for using assets from other mods
 public class SkillTreeClassWrapper
 {
 	private Class<? extends SkillTree> skillTreeClass;

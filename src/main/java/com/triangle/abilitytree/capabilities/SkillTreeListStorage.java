@@ -4,6 +4,7 @@ import net.minecraft.nbt.*;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 
+//Default capability storage
 public class SkillTreeListStorage implements Capability.IStorage<ISkillTreeList>
 {
 	@Override

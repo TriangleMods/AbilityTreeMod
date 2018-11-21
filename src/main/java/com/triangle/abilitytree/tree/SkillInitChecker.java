@@ -1,7 +1,7 @@
 package com.triangle.abilitytree.tree;
 
 //DOC_ME
-//TODO избавиться от этого класса, проверять все одним валидатором
+//TODO get rid of this class, create one globai init validation method
 public class SkillInitChecker
 {
 	private Boolean name = false;

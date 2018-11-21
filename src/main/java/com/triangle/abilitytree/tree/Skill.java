@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 import java.awt.*;
 import java.util.ArrayList;
 
-//DOC_ME
+//node of skill tree
 public abstract class Skill implements ISerializableTreePart
 {
 	private ArrayList<Skill> childSkills = null;
@@ -34,7 +34,6 @@ public abstract class Skill implements ISerializableTreePart
 
 		//TODO создавать не всегда
 		this.counters = new ArrayList<>();
-
 		this.rewards = new ArrayList<>();
 	}
 
@@ -43,7 +42,7 @@ public abstract class Skill implements ISerializableTreePart
 		return new ResourceLocation(skillTreeData.getModId() +":textures/gui/"+skillTreeData.getTreeName()+"/buttons.png");
 	}
 
-	//TODO этот код может быть чище
+	//TODO need optimization
 	@Override
 	public String serializeData()
 	{
@@ -63,7 +62,6 @@ public abstract class Skill implements ISerializableTreePart
 		}
 		else
 		{
-
 			ArrayList<String> counterData = new ArrayList<>();
 
 			for (Counter counter : this.getCounters())
@@ -75,7 +73,6 @@ public abstract class Skill implements ISerializableTreePart
 				builder.append(this.getName()+'<');
 				builder.append(String.join(",",counterData));
 			}
-
 		}
 
 		return builder.toString();

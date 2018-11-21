@@ -5,6 +5,7 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 
 import java.util.ArrayList;
 
+//default capability interface
 public interface ISkillTreeList
 {
 	String getDataAsString();

@@ -5,7 +5,7 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 
 import java.util.ArrayList;
 
-//DOC_ME
+//Counts, how many times event has been raised
 public class Counter implements ISerializableTreePart
 {
 	private int value;
@@ -15,7 +15,7 @@ public class Counter implements ISerializableTreePart
 	private boolean isComplited;
 	Class<? extends Event> eventType;
 
-	//TODO no empti names
+	//TODO no empty names
 	//TODO List of event-listeners, binded to counters
 	public Counter(String name, int maxValue, Class<? extends Event> eventType, String description) throws IndexOutOfBoundsException
 	{
@@ -38,7 +38,7 @@ public class Counter implements ISerializableTreePart
 	}
 
 
-
+	//Checks type of event, and if it is correct, handles in
 	public Boolean handleEvent(Event e)
 	{
 		Boolean neededEvent = eventType.isInstance(e);

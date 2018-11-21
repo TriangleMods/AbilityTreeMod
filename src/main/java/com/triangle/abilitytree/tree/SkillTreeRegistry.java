@@ -2,12 +2,13 @@ package com.triangle.abilitytree.tree;
 
 import java.util.ArrayList;
 
+//Registry of skills, creates default instances for initialization
 public class SkillTreeRegistry
 {
 	static ArrayList<SkillTreeClassWrapper> skillTreeTypes = new ArrayList<>();
 
-	//TODO проверка на однинаковые имена
-	//TODO проверка на специальные символы
+	//TODO collision validation
+	//TODO char blacklist validation
 	public static void add(Class<? extends SkillTree> skillTreeType, String modid)
 	{
 		skillTreeTypes.add(new SkillTreeClassWrapper(skillTreeType, modid));

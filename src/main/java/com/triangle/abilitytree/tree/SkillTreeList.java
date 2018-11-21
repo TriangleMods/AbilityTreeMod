@@ -5,6 +5,8 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 
 import java.util.ArrayList;
 
+//TODO implement load from new nbt format
+//DOC_ME
 public class SkillTreeList implements ISkillTreeList, ISerializableTreePart
 {
 	final ArrayList<SkillTree> skillTrees;

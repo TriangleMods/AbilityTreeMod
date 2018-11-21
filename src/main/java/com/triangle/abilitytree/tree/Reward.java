@@ -4,10 +4,10 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 
 import java.util.ArrayList;
 
-//DOC_ME
+//Contains data and influence logic of complited skill
 public abstract class Reward implements ISerializableTreePart
 {
-	//TODO Проверка верной инициализации
+	//TODO Init validation
 	private String description;
 	private String name;
 	Class<? extends Event> eventType;

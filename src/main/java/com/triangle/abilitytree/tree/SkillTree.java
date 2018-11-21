@@ -6,7 +6,9 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 
 import java.util.ArrayList;
 
-//TODO проверка инициализации
+//TODO init validation
+//TODO loading from new NBT string
+//Tree, contains all other skills, provides serialization methods
 public class SkillTree implements ISerializableTreePart
 {
 	private Skill root;
@@ -44,6 +46,7 @@ public class SkillTree implements ISerializableTreePart
 		return root.getAllChildSkills();
 	}
 
+	//new NBT save system
 	@Override
 	public String serializeData()
 	{
@@ -68,7 +71,7 @@ public class SkillTree implements ISerializableTreePart
 	}
 
 
-
+	//old nbt save system
 	public String getDataAsString()
 	{
 		StringBuilder builder = new StringBuilder("");
@@ -80,6 +83,7 @@ public class SkillTree implements ISerializableTreePart
 		return builder.toString();
 	}
 
+	//old nbt load system
 	public void setDataFromString(String serializedData) {
 
 		String[] countersData = serializedData.split(";");

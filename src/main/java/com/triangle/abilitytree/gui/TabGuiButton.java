@@ -6,7 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.util.ResourceLocation;
 
-//DOC_ME
+//Button, which connected to skillTree by id
 public class TabGuiButton extends GuiButton
 {
 	final ResourceLocation texture = new ResourceLocation("guiexperimetal:textures/gui/tabbutton.png");

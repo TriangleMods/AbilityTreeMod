@@ -15,9 +15,9 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
-//DOC_ME
-public class SkillTreeScreen extends GuiScreen {
-
+//Contains tabs with skillTrees
+public class SkillTreeScreen extends GuiScreen
+{
 	ResourceLocation texture = new ResourceLocation("guiexperimetal:textures/gui/background_gui_skill_1.png");
 
 	int guiWidth = 256;
@@ -25,8 +25,13 @@ public class SkillTreeScreen extends GuiScreen {
 
 	int activeTab = 0;
 
+	//Default minecraft buttons
 	private ArrayList<GuiButton> allGuiButtons = new ArrayList<>();
+
+	//Left tab buttons
 	private ArrayList<TabGuiButton> tabButtonList = new ArrayList<>();
+
+	//Currently displayed skill buttons
 	private ArrayList<SkillButton> skillButtonList = new ArrayList<>();
 
 	void updateSkillList()
@@ -50,12 +55,13 @@ public class SkillTreeScreen extends GuiScreen {
 		tabButtonList.clear();
 		updateSkillList();
 
+		//adding tabs buttons
 		for (int i = 0; i < SkillTreeExtractor.getAllSkillTrees(Minecraft.getMinecraft().player).getSkillTrees().size(); ++i)
 		{
 			tabButtonList.add(new TabGuiButton(ButtonType.TAB.getValue(), i, (width - guiWidth )/ 2 - 30,(height - guiHeight) / 2 + i * 45));
 		}
 
-
+		//adding exit button
 		buttonList.add( new GuiButton(ButtonType.GUI.getValue(), (width / 2) + 28, height/2 + 128, 100, 20, "Close"));
 
 		super.initGui();
@@ -65,6 +71,7 @@ public class SkillTreeScreen extends GuiScreen {
 	@Override
 	protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException
 	{
+		//left click
 		if (mouseButton == 0)
 		{
 			allGuiButtons.clear();
@@ -92,6 +99,7 @@ public class SkillTreeScreen extends GuiScreen {
 		}
 	}
 
+	//Click handler
 	@Override
 	protected void actionPerformed(GuiButton button) throws IOException {
 
@@ -124,6 +132,8 @@ public class SkillTreeScreen extends GuiScreen {
 		Minecraft.getMinecraft().renderEngine.bindTexture(texture);
 
 		drawTexturedModalRect(zeroCoord.x, zeroCoord.y, 0, 0, guiWidth, guiHeight);
+
+		//three loops due different drawing params of SkillButtons
 
 		for (TabGuiButton button : tabButtonList)
 		{

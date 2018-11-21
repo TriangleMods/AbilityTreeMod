@@ -13,7 +13,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-//DOC_ME
+//Button, which contains and displays data about skill. Used on SkillTreeScreen
 public class SkillButton extends GuiButton
 {
 	ResourceLocation texture;
@@ -40,6 +40,7 @@ public class SkillButton extends GuiButton
 		drawTexturedModalRect(x, y, skill.getTextureCoord().x*width, skill.getTextureCoord().y*height, width, height);
 	}
 
+	//Builds list of strings, which is displayed as context menu
 	public List<String> getTextStrings()
 	{
 		List<String> text = new ArrayList<>();

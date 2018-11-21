@@ -3,13 +3,9 @@ package com.triangle.abilitytree.tree;
 
 import java.util.ArrayList;
 
-//DOC_ME
 public class Util
 {
-	//Повторяющийся код в сериализаторе
-
-
-	//TODO Можно ли это оптимизировать?
+	//TODO replace with new nbt load method
 
 	public static ArrayList<String> getOnlyStartedWithAndCut(String[] strings, String start)
 	{

@@ -6,7 +6,8 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 
 import java.nio.charset.StandardCharsets;
 
-//DOC_ME
+//New SkillTree capability data message, from server to client
+//(Some event raise only on server-side, so we need sync)
 public class TreeDataMessageToClient implements IMessage
 {
 	public TreeDataMessageToClient(){}

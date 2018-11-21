@@ -7,7 +7,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-//DOC_ME
+//Default capability handler
 public class CapabilityHandler
 {
 	public static final ResourceLocation SKILL_TREE_CAPABILITY = new ResourceLocation(AbilityTreeMod.MODID, "skilltree");

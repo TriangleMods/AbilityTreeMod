@@ -10,7 +10,8 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 
-//DOC_ME
+//Updates player SkillTree capability with new data from server
+//(Some event raise only on server-side, so we need sync)
 public class MessageHandlerOnClient implements IMessageHandler<TreeDataMessageToClient, IMessage>
 {
 	@Override
